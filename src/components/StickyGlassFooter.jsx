@@ -32,7 +32,7 @@ const StickyGlassFooter = ({
             window.gtag_report_conversion();
         }
 
-        const message = "Ciao vi contatto dal vostro sito posaparquetmilano.it ...";
+        const message = "Ciao vi contatto dal vostro sito milanoimpermeabilizzazioni.it ...";
         const encodedMessage = encodeURIComponent(message);
         
         // Usa location.href invece di window.open per evitare tab bianca fantasma su mobile

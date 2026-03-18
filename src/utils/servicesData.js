@@ -35,7 +35,7 @@ export const servicesData = {
       image: heroPrefinito,
     },
     overview:
-      'Il parquet prefinito nasce per chi desidera il calore del legno con tempi di cantiere rapidi. Con Milano Posa Parquet ottieni un sopralluogo tecnico, se necessario la preparazione del sottofondo e la posa professionale con collanti certificati EC1.',
+      'Il parquet prefinito nasce per chi desidera il calore del legno con tempi di cantiere rapidi. Con Milano Impermeabilizzazioni ottieni un sopralluogo tecnico, se necessario la preparazione del sottofondo e la posa professionale con collanti certificati EC1.',
     sections: [
       {
         id: '01',
@@ -108,7 +108,7 @@ export const servicesData = {
     pricingId: 'prefinito-flottante',
     pageTitle: 'Posa Parquet Prefinito Flottante a Milano',
     metaDescription:
-      'Posa parquet prefinito flottante a Milano: materassino certificato, posa a click e battiscopa coordinati. Squadra Milano Posa Parquet.',
+      'Posa parquet prefinito flottante a Milano: materassino certificato, posa a click e battiscopa coordinati. Squadra Milano Impermeabilizzazioni.',
     hero: {
       h1: 'Posa parquet flottante',
       subtitle: 'Il comfort del legno con posa senza colla: veloce, pulita e subito calpestabile.',
@@ -207,7 +207,7 @@ export const servicesData = {
     pricingId: 'prefinito-spina',
     pageTitle: 'Posa Parquet Prefinito a Spina a Milano | Spina italiana, spina francese, spina ungherese',
     metaDescription:
-      'Posa parquet prefinito a spina a Milano: tracciatura laser, incollaggio professionale e finiture sartoriali. Prenota un sopralluogo con noi di Milano Posa Parquet.',
+      'Posa parquet prefinito a spina a Milano: tracciatura laser, incollaggio professionale e finiture sartoriali. Prenota un sopralluogo con noi di Milano Impermeabilizzazioni.',
     hero: {
       h1: 'Posa parquet a spina',
       subtitle: 'Spina italiana, francese o ungherese: precisione millimetrica e incollaggio che dura.',

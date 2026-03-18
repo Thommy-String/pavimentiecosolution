@@ -705,7 +705,7 @@ function InstallationQuiz({ service }) {
 
     // 3. Messaggio rivolto A TE (Azienda)
     const lines = [
-      "👋 Ciao, ho appena calcolato questa stima sul vostro sito posaparquetmilano.it ",
+      "👋 Ciao, ho appena calcolato questa stima sul vostro sito milanoimpermeabilizzazioni.it ",
       "",
       itemsList,
       "",
