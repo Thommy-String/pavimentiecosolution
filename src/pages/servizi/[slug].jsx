@@ -29,7 +29,7 @@ function ServicePage() {
   return (
     <>
       <Helmet>
-        <title>{`${finalTitle} | Milano Posa Parquet`}</title>
+        <title>{`${finalTitle} | Milano Impermeabilizzazioni`}</title>
         <meta name="description" content={finalDescription} />
         <link rel="canonical" href={currentUrl} />
         
