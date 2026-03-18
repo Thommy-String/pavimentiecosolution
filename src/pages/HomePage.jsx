@@ -1,6 +1,5 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import InstallationQuiz from '../components/InstallationQuiz';
 import RecentWorks from '../components/RecentWorks';
 
 // Below-fold: importazioni dirette — evitiamo decine di micro-chunk separati
@@ -75,11 +74,6 @@ function HomePage() {
       </script>
 
       <Hero />
-
-      {/* QUIZ */}
-      <section id="preventivatore" className="scroll-mt-28">
-        <InstallationQuiz />
-      </section>
 
       {/* Sezione Lavori Recenti */}
       <RecentWorks showFilter={true} />
