@@ -2,6 +2,29 @@ import React from 'react';
 import { ArrowRight, CheckCircle2, Banknote, ShieldCheck, Sofa, UserCheck, MessageCircle } from 'lucide-react';
 
 const ValuePropsSection = () => {
+  const points = [
+    { 
+      title: "INFILTRAZIONE ATTIVA", 
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop", 
+      desc: "Macchie di umidità e muffa che avanzano sul soffitto." 
+    },
+    { 
+      title: "GUAINA SCREPOLATA", 
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000&auto=format&fit=crop", 
+      desc: "Barriera protettiva ormai cotta dal sole e fragile." 
+    },
+    { 
+      title: "RISTAGNI PERICOLOSI", 
+      image: "https://images.unsplash.com/photo-1590066394891-81c6a7e04d49?q=80&w=1000&auto=format&fit=crop", 
+      desc: "Pendenze errate che accumulano acqua e logorano il terrazzo." 
+    },
+    { 
+      title: "DISTACCO PIASTRELLE", 
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000&auto=format&fit=crop", 
+      desc: "Acqua che solleva il pavimento e distrugge il massetto." 
+    }
+  ];
+
   const props = [
     {
       title: "TI FIDARESTI DI UN ACCONTO? NOI NO. PAGHI SOLO A LAVORO FINITO.",
@@ -77,6 +100,31 @@ const ValuePropsSection = () => {
 
   return (
     <section className="bg-white py-16 md:py-28 px-4 overflow-hidden">
+      <div className="bg-slate-50 py-16 md:py-24 px-4 border-t border-slate-200">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl md:text-5xl font-[900] text-slate-900 uppercase tracking-tighter leading-none mb-6">
+              Riconosci uno di questi <span className="text-red-600">problemi?</span>
+            </h2>
+            <p className="text-slate-600 font-medium uppercase tracking-widest text-sm">Agisci subito prima che il danno diventi strutturale</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {points.map((point, index) => (
+              <div key={index} className="group bg-white border-[3px] border-slate-900 rounded-[2rem] overflow-hidden shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] transition-all">
+                <div className="aspect-square overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <img src={point.image} alt={point.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-black text-slate-900 uppercase leading-none mb-2">{point.title}</h3>
+                  <p className="text-sm text-slate-600 leading-tight font-medium">{point.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto space-y-20 md:space-y-40">
         {props.map((prop, index) => (
           <div 
