@@ -64,11 +64,11 @@ const CATEGORIES = [
 const getCategory = (service) => {
   const name = service.name.toLowerCase();
   if (name.includes('accessori') || name.includes('profilo') || name.includes('scarico')) return 'accessories';
-  if (name.includes('liquida') || name.includes('resina') || name.includes('poliurea') || name.includes('membrana')) return 'liquida';
+  if (name.includes('liquida') || name.includes('membrana')) return 'liquida';
   return 'guaina';
 };
 
-function PricingSection({ defaultCategory = 'wood' }) {
+function PricingSection({ defaultCategory = 'liquida' }) {
   const [selectedService, setSelectedService] = useState(null); // Per i servizi standard (Calcolatore)
   const [selectedExtra, setSelectedExtra] = useState(null);     // Per gli extra (Popup info)
   const [activeCategory, setActiveCategory] = useState(defaultCategory);
@@ -99,10 +99,10 @@ function PricingSection({ defaultCategory = 'wood' }) {
         
         <div className="text-center mb-10">
           <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
-            Listino prezzi impermeabilizzazioni 2026
+            Prezzi Impermeabilizzazione <span className="text-blue-600">Terrazzi</span>
           </h2>
-          <p className="text-gray-500">
-            Scegli il sistema per vedere i costi dettagliati.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Soluzioni trasparenti con guaina liquida senza demolizioni. Garanzia certificata su ogni intervento.
           </p>
         </div>
 

@@ -2,167 +2,102 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Star, ShieldOff, Sofa, BadgeEuro, Ear, HardHat, Receipt, CalendarClock, MoveHorizontal, Check } from 'lucide-react';
 import HeroStats from './HeroStats';
 import CompactSocialProof from './CompactSocialProof';
-import InstallationQuiz from './InstallationQuiz';
 import { pricingData } from '../utils/pricingData';
 import { COMPANY_NAME } from '../utils/constants';
 
-// --- IMPORT IMMAGINI PRIMA/DOPO per le card ---
-import beaPrima from '../assets/images/primaDopoLavori/BeaPrima.jpeg';
-import beaDopo from '../assets/images/primaDopoLavori/BeaDopo.jpeg';
-import nelyPrima from '../assets/images/primaDopoLavori/NelyPrima.jpeg';
-import nelyDopo from '../assets/images/primaDopoLavori/NelyDopo.jpeg';
-import prima2 from '../assets/images/primaDopoLavori/prima2.jpg';
-import dopo2 from '../assets/images/primaDopoLavori/dopo2.jpg';
-import prima5 from '../assets/images/primaDopoLavori/prima5.jpg';
-import dopo5 from '../assets/images/primaDopoLavori/dopo5.webp';
-import rovereNaturaleDritto from '../assets/images/primaDopoLavori/rovereNaturaleDritto.jpeg';
-import rovereFlottante from '../assets/images/primaDopoLavori/rovereFlottante.webp';
-import prefinitoFlottanteLargo from '../assets/images/primaDopoLavori/prefinitoFlottanteLargo.webp';
-import rovereSpinaItaMobili from '../assets/images/primaDopoLavori/rovereSpinaItaMobili.webp';
-import posaSpinaUngherese from '../assets/images/primaDopoLavori/posaSpinaUngherese.jpg';
-import prefinitoDrittoRovere from '../assets/images/primaDopoLavori/prefinitoDrittoRovere.jpg';
-import laminatoGrigio from '../assets/images/primaDopoLavori/laminatoGrigio.jpg';
-import laminatoNoce from '../assets/images/primaDopoLavori/laminatoNoce.jpg';
-import laminatoRovereChiaro from '../assets/images/primaDopoLavori/laminatoRovereChiaro.jpg';
-import battiscopa10cm from '../assets/images/parquet/battiscopa10cm.jpg';
-import battiscopa5cm from '../assets/images/parquet/battiscopa5cm.jpg';
-import posaScala from '../assets/images/parquet/posaScala.jpg';
-import rivestimentoScaleRovere from '../assets/images/parquet/rivestimentoScaleRovere.jpg';
+// Unica immagine disponibile — segnaposto
+import placeholderImg from '../assets/images/terrazzo-perfetto-isolazione-base-chianche_1-1024x683.jpg';
 
 // Mappa: pricingId → coppie di immagini prima/dopo per le 2 card comparison
 const COMPARISON_DATA = {
-  'prefinito': [
-    { beforeImg: prima2, afterImg: dopo2, price: '€2.002', time: '3 Giorni', label: 'Posa a colla prefinito' },
-    { beforeImg: rovereNaturaleDritto, afterImg: prefinitoDrittoRovere, price: '€1.750', time: '3 Giorni', label: 'Rovere Naturale' },
+  'guaina-liquida': [
+    { beforeImg: placeholderImg, afterImg: placeholderImg, price: '€1.800', time: '2 Giorni', label: 'Guaina Poliuretanica' },
+    { beforeImg: placeholderImg, afterImg: placeholderImg, price: '€2.200', time: '3 Giorni', label: 'Sistema Armato' },
   ],
-  'prefinito-flottante': [
-    { beforeImg: prima2, afterImg: dopo2, price: '€2.002', time: '3 Giorni', label: 'Installazione Flottante' },
-    { beforeImg: rovereFlottante, afterImg: prefinitoFlottanteLargo, price: '€2.650', time: '4 Giorni', label: 'Plancia Larga' },
-  ],
-  'prefinito-spina': [
-    { beforeImg: nelyPrima, afterImg: nelyDopo, price: '€1.950', time: '2 Giorni', label: 'Spina Francese' },
-    { beforeImg: rovereSpinaItaMobili, afterImg: posaSpinaUngherese, price: '€2.405', time: '2 Giorni', label: 'Spina Italiana' },
-  ],
-  'spc': [
-    { beforeImg: beaPrima, afterImg: beaDopo, price: '€430', time: '5 ore', label: 'Nuovo ambiente in SPC' },
-    { beforeImg: prima5, afterImg: dopo5, price: '€1.560', time: '2 Giorni', label: 'Posa SPC a Spina' },
-  ],
-  'laminato': [
-    { beforeImg: laminatoGrigio, afterImg: laminatoNoce, price: '€1.405', time: '2 Giorni', label: 'Laminato effetto Noce' },
-    { beforeImg: laminatoRovereChiaro, afterImg: laminatoGrigio, price: '€700', time: '8 ore', label: 'Laminato Grigio moderno' },
-  ],
-  'battiscopa': [
-    { beforeImg: battiscopa5cm, afterImg: battiscopa10cm, price: '€430', time: '5 ore', label: 'Installazione Battiscopa' },
-    { beforeImg: battiscopa10cm, afterImg: battiscopa5cm, price: '€350', time: '4 ore', label: 'Battiscopa su misura' },
-  ],
-  'scala-parquet': [
-    { beforeImg: posaScala, afterImg: rivestimentoScaleRovere, price: '€2.002', time: '3 Giorni', label: 'Nuovo Rivestimento Scale' },
-    { beforeImg: rivestimentoScaleRovere, afterImg: posaScala, price: '€1.800', time: '2 Giorni', label: 'Gradini in vero Rovere' },
+  'resina-trasparente': [
+    { beforeImg: placeholderImg, afterImg: placeholderImg, price: '€1.450', time: '1 Giorno', label: 'Resina per Klinker' },
+    { beforeImg: placeholderImg, afterImg: placeholderImg, price: '€950', time: '5 ore', label: 'Sigillatura Trasparente' },
   ],
 };
 
 // Titoli dinamici per l'H1
 const SERVICE_TITLES = {
-  'prefinito': (
+  'guaina-liquida': (
     <>
-      Trasforma il tuo salotto in una  <span className="bg-orange-200 px-0.5 rounded-sm">copertina di design</span>. Posiamo il tuo nuovo parquet <span className="bg-green-100 px-0.5 rounded-sm"> senza nessun acconto</span> a prezzi fissi dall'inizio alla fine.
+      Blocchiamo le <span className="bg-red-100 px-0.5 rounded-sm text-red-600">infiltrazioni</span> del tuo terrazzo in 48 ore. <span className="bg-yellow-100 px-0.5 rounded-sm">Senza demolire le piastrelle</span> e con garanzia di tenuta certificata.
     </>
   ),
-  'prefinito-flottante': (
+  'resina-trasparente': (
     <>
-      Posiamo parquet 'flottante' <span className="bg-yellow-100 px-0.5 rounded-sm">senza colla</span> sul <span className="bg-green-100 px-0.5 rounded-sm">pavimento esistente, senza demolizioni</span> e senza nessun acconto.
-    </>
-  ),
-  'prefinito-spina': (
-    <>
-    Trasforma il tuo salotto in una copertina di design. <span className="bg-yellow-100 px-0.5 rounded-sm">Elegante Posa parquet a spina</span> in 2-3 giorni. Nessun acconto richiesto.
-    </>
-  ),
-  'spc': (
-    <>
-     Nuovo pavimento spc in 48 ore: <span className="bg-yellow-100 px-0.5 rounded-sm">Copre Direttamente le piastrelle o marmo esistente.</span>  <span className="bg-green-100 px-0.5 rounded-sm">Zero demolizioni. Zero acconti: paghi alla fine</span>
-    </>
-  ),
-  'laminato': (
-    <>
-      Copri il vecchio pavimento con <span className="bg-yellow-100 px-0.5 rounded-sm">nuovo laminato</span> in 1-2 giorni <span className="bg-green-100 px-0.5 rounded-sm"> senza nessun acconto.</span>
-    </>
-  ),
-  'battiscopa': (
-    <>
-      <span className="bg-yellow-100 px-0.5 rounded-sm"> battiscopa  </span> installati <span className="bg-green-100 px-0.5 rounded-sm">a regola d'arte.</span>
-    </>
-  ),
-  'scala-parquet': (
-    <>
-      Trasforma la tua vecchia scala in un <span className="bg-yellow-100 px-0.5 rounded-sm">elemento di design</span> rivestito in <span className="bg-green-100 px-0.5 rounded-sm">rovere pregiato.</span>
+      Proteggi il tuo balcone con la <span className="bg-blue-100 px-0.5 rounded-sm text-blue-600">resina invisibile</span>. Intervento rapido in giornata, <span className="bg-green-100 px-0.5 rounded-sm text-green-700">zero acconti</span> e stop immediato alle perdite.
     </>
   ),
 };
 
 // --- CARD PRIMA/DOPO (Identica alla Home) ---
 
-// Sezione Pain → Dream per SPC e Laminato — Copy Premium/Autorevole
+// Sezione Pain → Dream per Impermeabilizzazioni
 const PAIN_POINTS = {
-  'spc': [
+  'guaina-liquida': [
     {
       icon: ShieldOff,
       number: '01',
-      tag: 'Zero demolizioni',
-      headline: 'Direttamente sul vecchio pavimento.',
-      body: 'L\'SPC si installa direttamente sopra piastrelle, gres o marmo. Nessuna demolizione, nessun calcinaccio.',
-      stat: 'Calpestabile subito',
+      tag: 'Zero Demolizioni',
+      headline: 'Dimentica polvere e calcinacci.',
+      body: 'Applichiamo i nostri sistemi direttamente sopra la pavimentazione esistente. Risparmi tempo, soldi e stress.',
+      stat: 'Risparmio medio 60%',
       accentColor: 'amber',
     },
     {
       icon: Sofa,
       number: '02',
-      tag: 'Anche con mobili',
-      headline: 'Ai tuoi mobili ci pensiamo noi.',
-      body: 'Spostiamo ogni elemento stanza per stanza e rimettiamo tutto al suo posto. Tu non alzi un dito.',
-      stat: 'Non devi andare in hotel',
+      tag: 'Cantiere Pulito',
+      headline: 'Il tuo terrazzo resta in ordine.',
+      body: 'Non usiamo martelli pneumatici. Solo membrane liquide certificate e rulli. A fine giornata è tutto pulito.',
+      stat: 'Pronto in 48 ore',
       accentColor: 'blue',
     },
     {
       icon: BadgeEuro,
       number: '03',
-      tag: 'Prezzo Blindato',
-      headline: 'Nessun acconto.',
-      body: 'Preventivo precisi al centesimo. Il prezzo che vedi è il prezzo che paghi — dopo aver verificato il risultato alla fine di ogni giornata.',
-      stat: '€0 anticipati',
+      tag: 'Prezzo Senza Sorprese',
+      headline: 'Nessun acconto richiesto.',
+      body: 'Paghi solo dopo aver visto il risultato. Preventivi chiari al mq, tutto incluso, zero costi extra.',
+      stat: 'Garanzia 10 anni',
       accentColor: 'emerald',
     },
   ],
-  'laminato': [
+  'resina-trasparente': [
     {
       icon: ShieldOff,
       number: '01',
-      tag: 'Tecnologia Invisibile',
-      headline: 'Le piastrelle restano lì. Il laminato le copre.',
-      body: 'Niente demolizioni, niente polvere. Il nuovo pavimento si posa sopra quello esistente in 1-2 giorni.',
-      stat: 'Pronto in 48 ore',
+      tag: 'Estetica Intatta',
+      headline: 'L\'acqua si ferma, il colore resta.',
+      body: 'La nostra resina è 100% trasparente. Protegge le fughe e il supporto senza alterare l\'aspetto delle tue mattonelle.',
+      stat: 'Effetto invisibile',
       accentColor: 'amber',
     },
     {
       icon: Sofa,
       number: '02',
-      tag: 'Casa Abitata, Zero Stress',
-      headline: 'Mobili pesanti? Non è un tuo problema.',
-      body: 'Lavoriamo stanza per stanza: spostiamo tutto, posiamo, rimettiamo ogni cosa al suo posto.',
-      stat: 'Vita quotidiana invariata',
+      tag: 'Rapido & Indolore',
+      headline: 'Un giorno e hai finito.',
+      body: 'Interveniamo la mattina e la sera il tuo balcone è già protetto. Nessun trasloco di arredi esterni complicato.',
+      stat: 'Asciugatura in 4 ore',
       accentColor: 'blue',
     },
     {
       icon: BadgeEuro,
       number: '03',
-      tag: 'Prezzo Blindato',
-      headline: 'Il prezzo non cambia. Mai.',
-      body: 'Preventivo vincolante. Nessun acconto, nessuna sorpresa. Paghi solo a lavoro finito e verificato.',
-      stat: '€0 anticipati',
+      tag: 'Prezzo Senza Sorprese',
+      headline: 'Nessun acconto richiesto.',
+      body: 'Preventivi chiari e trasparenti. Paghi solo dopo aver verificato il risultato finale.',
+      stat: 'Garanzia 5 anni',
       accentColor: 'emerald',
     },
   ],
 };
+
 const ComparisonCard = ({ beforeImg, afterImg, price, timeDisplay, label, className }) => (
   <div className={`relative group w-full overflow-hidden shadow-sm border border-gray-100 rounded-xl ${className}`}>
     {/* PRIMA */}
@@ -324,139 +259,6 @@ const PainPointsSection = ({ points }) => {
   );
 };
 
-// --- SEZIONE PAS (Problem-Agitation-Solution) — Solo SPC ---
-const SPC_DOUBTS = [
-  {
-    icon: Ear,
-    label: 'E se suona a vuoto?',
-    text: 'E se dopo aver speso soldi e tempo, camminandoci sopra, sentissi quel fastidioso rumore di "vuoto"? E se al tatto sembrasse palesemente finto o instabile?',
-  },
-  {
-    icon: HardHat,
-    label: 'Chi entra in casa mia?',
-    text: 'L\'idea di dover gestire operai sconosciuti che girano per le stanze, spostano i tuoi oggetti personali e lasciano polvere ovunque è stressante. La tua casa è il tuo rifugio, non un porto di mare.',
-  },
-  {
-    icon: Receipt,
-    label: 'E se il prezzo sale durante i lavori?',
-    text: 'Hai sentito troppe storie di "prezzi bloccati" che poi lievitano a lavori in corso per colpa di imprevisti calcolati male.',
-  },
-  {
-    icon: CalendarClock,
-    label: 'E se tra qualche anno devo ricambiarlo?',
-    text: 'Temi di vedere, tra un anno, le doghe che si scollano o si sollevano agli angoli perché il fondo non era stato preparato a dovere.',
-  },
-];
-
-const SPCPainAgitationSection = () => (
-  <div className="w-full bg-white relative z-10">
-    <div className="max-w-md mx-auto px-5 py-10">
-
-      {/* --- Titolo --- */}
-      <div className="text-left mb-5">
-        <h3 className="text-[22px] md:text-[26px] font-[800] text-red-500 leading-[1.2] tracking-tight">
-          Vorresti far sparire quel vecchio pavimento,{' '}
-          <span className="text-slate-400">ma il timore dei lavori ti blocca?</span>
-        </h3>
-      </div>
-
-      {/* --- Sottotitolo --- */}
-      <p className="text-[15px] md:text-[16px] text-slate-500 leading-relaxed tracking-tight mb-6 border-l-2 border-red-300 pl-4 py-1">
-        Guardando le vecchie piastrelle o quel pavimento rovinato, probabilmente immagini già il nuovo pavimento. Ma subito dopo, arrivano i dubbi:
-      </p>
-
-     
-
-      {/* --- Bullet Points "Dubbi" — light mode, rosso delicato --- */}
-      <div className="flex flex-col gap-4 mb-8">
-        {SPC_DOUBTS.map((item, i) => {
-          const Icon = item.icon;
-          return (
-            <div
-              key={i}
-              className="
-                relative rounded-xl border border-red-100 bg-red-50/40
-                p-4 text-left
-                transition-all duration-300
-                hover:bg-red-50/70 hover:border-red-200
-                group
-              "
-            >
-              <div className="flex items-start gap-3">
-                <div className="shrink-0 w-9 h-9 rounded-lg bg-red-100 flex items-center justify-center mt-0.5 group-hover:bg-red-200/60 transition-colors">
-                  <Icon size={16} className="text-red-500" strokeWidth={2.5} />
-                </div>
-                <div className="flex flex-col gap-1 min-w-0">
-                  <span className="text-[12px] font-[800] text-red-600 uppercase tracking-wide">
-                    {item.label}
-                  </span>
-                  <p className="text-[15px] md:text-[16px] text-slate-600 leading-relaxed tracking-tight">
-                    {item.text}
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* --- "La nostra risposta" — tilted, border-left, highlights (stile hero H2) --- */}
-      <div className="mb-8">
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-3">La nostra garanzia</p>
-        <div className="border-l-2 border-gray-500 pl-4 py-1 -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-default">
-          <p className="text-[15px] md:text-[16px] text-slate-600 leading-relaxed tracking-tight mb-3">
-            Abbiamo strutturato il nostro metodo di lavoro partendo da queste preoccupazioni, <span className="font-bold text-slate-900">non dalla vendita.</span>
-          </p>
-          <p className="text-[15px] md:text-[16px] text-slate-600 leading-relaxed tracking-tight">
-            Più di <span className="bg-yellow-100 px-1 rounded-sm text-slate-900 font-bold">327 installazioni ogni anno</span> in Lombardia. I tuoi mobili saranno trattati con cura e che il <span className="bg-green-100 px-1 rounded-sm text-slate-900 font-bold">prezzo che vedi oggi è l'unico che pagherai</span>.
-          </p>
-        </div>
-      </div>
-
-      {/* CTA — brutaliste WhatsApp */}
-      <div className="flex justify-center mb-3 relative">
-        <a
-          href="https://wa.me/393342221212"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => {
-            if (typeof window.gtag_report_conversion === 'function') {
-              window.gtag_report_conversion();
-            }
-          }}
-          className="
-            group relative inline-flex items-center gap-4
-            bg-white border-[2.5px] border-slate-900 
-            px-8 py-4 rounded-xl
-            text-slate-900 font-black uppercase tracking-tighter
-            transition-all duration-200
-            shadow-[6px_6px_0px_0px_rgba(15,23,42,1)]
-            hover:shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]
-            hover:translate-x-1 hover:translate-y-1
-            active:bg-gray-50
-          "
-        >
-          <div className="p-2 bg-green-50 rounded-lg group-hover:bg-green-100 transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#25D366"/>
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.257-.154-2.874.854.854-2.874-.154-.257A8 8 0 1112 20z" fill="#25D366"/>
-            </svg>
-          </div>
-          <div className="flex flex-col items-start leading-none">
-            <span className="text-[10px] text-green-600 font-bold mb-1 tracking-widest uppercase">Rispondiamo in 4 min</span>
-            <span className="text-xl md:text-2xl italic">Dicci del tuo progetto</span>
-          </div>
-        </a>
-      </div>
-      {/* Micro rassicurazione */}
-      <div className="flex items-center justify-center gap-3 mt-2">
-        <span className="text-[10px] md:text-[11px] font-medium uppercase tracking-tighter text-slate-400 underline decoration-slate-200 underline-offset-4">Senza impegno · Preventivo gratis</span>
-      </div>
-
-    </div>
-  </div>
-);
-
 // --- COMPONENTE SLIDER PRIMA/DOPO ---
 const BeforeAfterSlider = ({ beforeImg, afterImg }) => {
   // Usiamo un ref per la posizione per evitare re-render su ogni frame/drag.
@@ -600,7 +402,7 @@ function ServiceHeroHome({ service }) {
 
   const pricingId = service.pricingId || '';
   const serviceTitle = SERVICE_TITLES[pricingId] || service.hero?.h1 || 'pavimento';
-  const comparisons = COMPARISON_DATA[pricingId] || COMPARISON_DATA['prefinito'];
+  const comparisons = COMPARISON_DATA[pricingId] || COMPARISON_DATA['guaina-liquida'];
   const priceInfo = pricingData.find(p => p.id === pricingId) || {};
 
   return (
@@ -763,8 +565,7 @@ function ServiceHeroHome({ service }) {
               <HeroStats />
             </div>
 
-            {/* PREVENTIVATORE ONLINE — InstallationQuiz integrato nella hero */}
-            <InstallationQuiz service={service} />
+            {/* PREVENTIVATORE ONLINE — rimosso InstallationQuiz */}
 
             {/* Social Proof Carousel — filtrato per servizio */}
             <CompactSocialProof category={pricingId} />
@@ -778,8 +579,6 @@ function ServiceHeroHome({ service }) {
         <PainPointsSection points={PAIN_POINTS[pricingId]} />
       )}
 
-      {/* SEZIONE PAS — Solo SPC, dopo il carosello lavori */}
-      {pricingId === 'spc' && <SPCPainAgitationSection />}
     </section>
   );
 }

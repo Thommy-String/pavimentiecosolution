@@ -1,49 +1,14 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import { Ruler, Timer, CheckCircle2 } from 'lucide-react';
+import placeholderImg from '../assets/images/terrazzo-perfetto-isolazione-base-chianche_1-1024x683.jpg';
 
-// --- IMPORT IMMAGINI REALI ---
-import rovereIta from '../assets/images/parquet/rovereIta.jpg';
-import roverePrima from '../assets/images/primaDopoLavori/prima2.jpg';
-import rovereDopo from '../assets/images/primaDopoLavori/dopo2.jpg';
-import roverePrima3 from '../assets/images/primaDopoLavori/prima3.jpg';
-import rovereDopo3 from '../assets/images/primaDopoLavori/dopo3.jpg';
-import rovereNaturaleDritto from '../assets/images/parquet/rovereNaturale.jpg';
-import rovereNoce from '../assets/images/primaDopoLavori/prefinitoNoce.jpg';
-import rovereNaturale from '../assets/images/primaDopoLavori/rovereNaturaleDritto.jpeg';
-import rovereChiaro from '../assets/images/primaDopoLavori/rovereChiaro.jpg';
-import prefinitoDrittoRovere from '../assets/images/primaDopoLavori/prefinitoDrittoRovere.jpg';
-import rovereFlottante from '../assets/images/primaDopoLavori/rovereFlottante.webp';
-import prefinitoFlottanteLargo from '../assets/images/primaDopoLavori/prefinitoFlottanteLargo.webp';
-import rovereSpinaItaMobili from '../assets/images/primaDopoLavori/rovereSpinaItaMobili.webp';
-import posaSpinaUngherese from '../assets/images/primaDopoLavori/posaSpinaUngherese.jpg';
-import spcSpinaPrima5 from '../assets/images/primaDopoLavori/prima5.jpg';
-import spcSpinaDopo5 from '../assets/images/primaDopoLavori/dopo5.webp';
-import montaggioSPCRovere from '../assets/images/primaDopoLavori/montaggioSPCRovere.jpg';
-import BeaDopo from '../assets/images/primaDopoLavori/BeaDopo.jpeg';
-import BeaPrima from '../assets/images/primaDopoLavori/BeaPrima.jpeg';
-import spinaFrancese from '../assets/images/parquet/spinaFraRovereNaturale.webp';
-import laminatoGrigio from '../assets/images/primaDopoLavori/laminatoGrigio.jpg';
-import laminatoNoce from '../assets/images/primaDopoLavori/laminatoNoce.jpg';
-import laminatoRovereChiaro from '../assets/images/primaDopoLavori/laminatoRovereChiaro.jpg';
-
-// --- DATI REALI (IMPORTATI DAL TUO FILE) ---
+// --- DATI REALI ---
 const rawWorks = [
-    { id: 2, category: 'prefinito-flottante', title: 'Prefinito Flottante', location: 'Navigli', sqm: 91, price: 2002, time: '3gg', imageAfter: rovereDopo, review: { text: "Tempi rispettati.", avatar: "https://i.pravatar.cc/150?u=25" } },
-    { id: 3, category: 'prefinito', title: 'Prefinito Dritto', location: 'P.ta Nuova', sqm: 44, price: 1628, time: '9h', imageAfter: rovereNaturaleDritto, review: { text: "Consiglio...", avatar: "https://i.pravatar.cc/150?u=19" } },
-    { id: 19, category: 'spc', title: 'SPC Cucina', location: 'Sesto S.G.', sqm: 10, price: 430, time: '5h', imageAfter: BeaDopo, review: { text: "Precisione top...", avatar: "https://ui-avatars.com/api/?name=B&background=0D8ABC&color=fff" } },
-    { id: 1, category: 'spc', title: 'SPC Spina 90°', location: 'Prov. MILANO', sqm: 71, price: 1562, time: '2gg', imageAfter: spcSpinaDopo5, review: { text: "Parquet stupendo!", avatar: "https://i.pravatar.cc/150?u=13" } },
-    { id: 10, category: 'spc', title: 'SPC Click', location: 'Milano Sud', sqm: 57, price: 1255, time: '3gg', imageAfter: montaggioSPCRovere, review: { text: "Puntuali e precisi...", avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=g" } },
-    { id: 4, category: 'spc', title: 'SPC Affitto', location: 'Studi MILANO', sqm: 74, price: 1410, time: '3gg', imageAfter: rovereDopo3, review: { text: "Regola d'arte...", avatar: "https://i.pravatar.cc/150?u=21" } },
-    { id: 5, category: 'prefinito-spina', title: 'Spina Italiana', location: 'Calvairate', sqm: 65, price: 2405, time: '2gg', imageAfter: rovereIta, review: { text: "Eccellente...", avatar: "https://i.pravatar.cc/150?u=41" } },
-    { id: 6, category: 'prefinito-spina', title: 'Spina Francese', location: 'Cerro Magg.', sqm: 53, price: 1855, time: '2gg', imageAfter: spinaFrancese, review: { text: "Esperienza positiva.", avatar: "https://i.pravatar.cc/150?u=46" } },
-    { id: 7, category: 'laminato', title: 'Laminato Grigio', location: 'Hinterland', sqm: 87, price: 1405, time: '2gg', imageAfter: laminatoGrigio, review: { text: "Bravo Andrea il parquettista.", avatar: "https://i.pravatar.cc/150?u=500" } },
-    { id: 8, category: 'laminato', title: 'Laminato Noce', location: 'Milano Centro', sqm: 46, price: 700, time: '8h', imageAfter: laminatoNoce, review: { text: "5 stelle.", avatar: "https://ui-avatars.com/api/?name=M&background=0D8ABC&color=fff" } },
-    { id: 9, category: 'laminato', title: 'Rovere Chiaro', location: 'Milano', sqm: 51, price: 1250, time: '8h', imageAfter: laminatoRovereChiaro, review: { text: "Risultato finale top.", avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=Mario" } },
-    { id: 11, category: 'prefinito', title: 'Rovere 19cm', location: 'Lodi', sqm: 66, price: 1750, time: '3gg', imageAfter: rovereNaturale, review: { text: "Ottimo lavoro.", avatar: "https://ui-avatars.com/api/?name=GP&background=0D8ABC&color=fff" } },
-    { id: 12, category: 'prefinito', title: 'Noce Scuro', location: 'Prov. MILANO', sqm: 110, price: 2820, time: '4gg', imageAfter: rovereNoce, review: { text: "Prezzi chiari.", avatar: "https://ui-avatars.com/api/?name=AF&background=0D8ABC&color=fff" } },
-    { id: 13, category: 'prefinito', title: 'Rovere Chiaro', location: 'Prov. MILANO', sqm: 38, price: 1786, time: '3gg', imageAfter: rovereChiaro, review: { text: "Fatto la cosa giusta.", avatar: "https://i.pravatar.cc/150?u=20" } },
-    { id: 14, category: 'prefinito', title: 'Rovere Select', location: 'Bergamo', sqm: 79, price: 3250, time: '4gg', imageAfter: prefinitoDrittoRovere, review: { text: "Impeccabile...", avatar: "https://ui-avatars.com/api/?name=A&background=0D8ABC&color=fff" } },
-    { id: 16, category: 'prefinito-flottante', title: 'Plancia Larga', location: 'Legnano', sqm: 120, price: 2650, time: '4gg', imageAfter: prefinitoFlottanteLargo, review: { text: "Velocissimi...", avatar: "https://ui-avatars.com/api/?name=MD&background=0D8ABC&color=fff" } },
+    { id: 2, category: 'impermeabilizzazione', title: 'Ripristino Terrazzo', location: 'Navigli', sqm: 45, price: 1800, time: '2gg', imageAfter: placeholderImg, review: { text: "Problema risolto.", avatar: "https://i.pravatar.cc/150?u=25" } },
+    { id: 3, category: 'resina', title: 'Resina Trasparente', location: 'P.ta Nuova', sqm: 32, price: 1450, time: '1gg', imageAfter: placeholderImg, review: { text: "Estetica perfetta.", avatar: "https://i.pravatar.cc/150?u=19" } },
+    { id: 19, category: 'balconi', title: 'Sistemazione Balcone', location: 'Sesto S.G.', sqm: 12, price: 550, time: '6h', imageAfter: placeholderImg, review: { text: "Rapidi e puliti.", avatar: "https://ui-avatars.com/api/?name=B&background=0D8ABC&color=fff" } },
+    { id: 1, category: 'lastrici', title: 'Lastrico Solare', location: 'Prov. MILANO', sqm: 110, price: 4200, time: '4gg', imageAfter: placeholderImg, review: { text: "Lavoro mastodontico.", avatar: "https://i.pravatar.cc/150?u=13" } },
+    { id: 10, category: 'impermeabilizzazione', title: 'Guaina Liquida', location: 'Milano Sud', sqm: 55, price: 2100, time: '2gg', imageAfter: placeholderImg, review: { text: "Puntuali.", avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=g" } },
 ];
 
 // --- LOGICA AUTOMATICA PER LE DIMENSIONI ---
@@ -108,7 +73,7 @@ const PinterestCard = ({ work }) => {
 
                 <div className="flex items-baseline gap-1 mb-2">
                     <span className="text-[20px] font-black text-emerald-400 leading-none shadow-black drop-shadow-md">€{work.price}</span>
-                    <span className="text-[9px] text-white/70 font-medium">il montaggio</span>
+                    <span className="text-[9px] text-white/70 font-medium">l'intervento</span>
                 </div>
 
                 <div className="flex gap-2 border-t border-white/20 pt-2">

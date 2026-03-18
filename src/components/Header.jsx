@@ -1,238 +1,72 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShieldCheck, Calculator, Ruler, Phone, X, Menu, Sparkles, ChevronRight } from 'lucide-react';
+import { MessageCircle } from 'lucide-react'; // Cambio Phone con MessageCircle per WhatsApp
 import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
-import { serviceNavLinks } from '../utils/serviceNavLinks';
-import logoImage from '../assets/logo/favicon.png';
-
-// --- DATI ---
-const toolsItems = [
-  { label: 'Scanner Preventivi', sub: 'Anti-Fregatura', icon: ShieldCheck, href: '/#scanner-preventivi', color: 'text-rose-500', bgColor: 'bg-rose-50' },
-  { label: 'Calcolatore MQ', sub: 'Quanto serve?', icon: Calculator, href: '/#calcolatore-mq', color: 'text-blue-500', bgColor: 'bg-blue-50' },
-  { label: 'Check Sottofondo', sub: 'Evita disastri', icon: Ruler, href: '/#check-sottofondo', color: 'text-amber-500', bgColor: 'bg-amber-50' },
-];
+import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Modifica: Header sempre visibile al caricamento (sia mobile che desktop).
-  // Lo scroll handler lo nasconderà quando l'utente scrolla giù.
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  // Modifica: Header sempre visibile, ma non sticky (position: absolute)
   const location = useLocation();
 
-  // 1. Chiudi il menu quando cambia la rotta
+  // 1. Chiudi il menu quando cambia la rotta (opzionale se singola pagina)
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
-
-  // 2. Gestione Scroll (Nascondi scendendo, Mostra salendo)
-  // Usa useRef + confronto per evitare re-render inutili su ogni pixel di scroll
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        ticking = false;
-
-        // Se il menu è aperto, l'header DEVE restare visibile
-        if (isMenuOpen) {
-          setIsVisible(true);
-          lastScrollY.current = window.scrollY;
-          return;
-        }
-
-        const currentScrollY = window.scrollY;
-        const isMobile = window.innerWidth < 768;
-        let newVisible = isVisible;
-
-        if (!isMobile) {
-          if (currentScrollY < 10) {
-            newVisible = true;
-          } else if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
-            newVisible = false;
-          } else if (currentScrollY < lastScrollY.current) {
-            newVisible = true;
-          }
-        } else {
-          // Mobile: mostra sempre in cima, nascondi scrollando giù, mostra scrollando su
-          if (currentScrollY < 10) {
-            newVisible = true;
-          } else if (currentScrollY > lastScrollY.current) {
-            newVisible = false;
-          } else if (currentScrollY < lastScrollY.current) {
-            newVisible = true;
-          }
-        }
-
-        lastScrollY.current = currentScrollY;
-
-        // Aggiorna stato solo se cambia davvero (evita re-render inutili)
-        if (newVisible !== isVisible) {
-          setIsVisible(newVisible);
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMenuOpen, isVisible]);
-
-  // 3. Blocca lo scroll del sito quando il menu è aperto
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => { document.body.style.overflow = 'unset'; }
-  }, [isMenuOpen]);
-
-  const serviceLinks = useMemo(() => {
-    return serviceNavLinks
-      .filter((s) => s.slug && s.navLabel)
-      .sort((a, b) => (a.order || 0) - (b.order || 0));
-  }, []);
 
   return (
     <>
       <style>
         {`
-          :root {
-            --header-height-mobile: 3.5rem; /* 56px */
-            --header-height-desktop: 4rem; /* 64px */
-          }
-          
-          /* Spazio per l'header solo su desktop o quando visibile secondo logica */
-          body {
-            padding-top: var(--header-height-desktop);
-          }
-
-          @media (max-width: 767px) {
-            /* Su mobile, rimuoviamo il padding-top del body per recuperare spazio */
-            /* L'header è fixed, ma inizialmente nascosto e compare sopra il contenuto */
-            body {
-               padding-top: 0 !important;
-            }
+          .header-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
           }
         `}
       </style>
 
-      {/* --- HEADER BAR (FISSO MA A SCOMPARSA) --- */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-[60] bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-transform duration-300 ease-in-out ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
-        }`}
-        // Altezze ridotte: h-14 (56px) su mobile, h-16 (64px) su desktop
-        style={{ height: 'var(--header-height, 3.5rem)' }} 
-      >
-        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-14 md:h-16">
-          
-          {/* 1. LOGO */}
-          <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex-shrink-0 z-[61]">
-            <img src={logoImage} alt={COMPANY_NAME} className="h-7 md:h-9 w-auto" />
-          </Link>
-
-          {/* 2. LATO DESTRO (CTA + HAMBURGER) */}
-          <div className="flex items-center gap-3 md:gap-5">
+      <header className="header-nav bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20 md:h-24">
             
-            {/* CTA VISIBILE SU DESKTOP */}
-            <div className="hidden sm:flex items-center gap-4">
-               <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-black transition-colors">
-                <Phone size={16} /> 
-                <span className="hidden lg:inline">{PHONE_NUMBER}</span>
-              </a>
-              <Link to="/#preventivatore" className="bg-[#1a1a1a] hover:bg-black text-white px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-widest transition-transform active:scale-95">
-                Preventivo
+            {/* Logo e Tagline */}
+            <div className="flex items-center gap-3 md:gap-4">
+              <Link to="/" className="flex-shrink-0 group">
+                <img 
+                  src={logoImage} 
+                  alt={COMPANY_NAME} 
+                  className="h-12 w-12 md:h-16 md:w-16 object-contain rounded-xl shadow-sm border border-slate-100 group-hover:scale-105 transition-transform"
+                />
               </Link>
+              <div className="flex flex-col border-l-2 border-slate-100 pl-3 md:pl-4">
+                <span className="text-lg md:text-xl font-black text-slate-900 leading-tight tracking-tighter">
+                  Ecosolution
+                </span>
+                <span className="text-[10px] md:text-xs font-medium text-slate-600 uppercase tracking-[-0.02em]">
+                  Specialista in impermeabilizzazioni
+                </span>
+              </div>
             </div>
 
-            {/* HAMBURGER BUTTON (SEMPRE VISIBILE) */}
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-gray-800 hover:bg-gray-100 rounded-full transition-colors z-[61] active:scale-90"
-              aria-label="Menu"
-            >
-              {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
-          </div>
+            {/* Desktop & Mobile CTA - Giallo stile Hero Semplificato */}
+            <div className="flex items-center">
+              <a
+                href={`https://wa.me/${PHONE_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-2 text-slate-900 border-2 border-slate-900/10 hover:border-slate-900/20 px-4 py-2 md:px-6 md:py-3 rounded-lg md:rounded-xl font-bold uppercase tracking-tight text-[11px] md:text-sm transition-all hover:bg-slate-50"
+              >
+                <MessageCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-600" />
+                <span>Preventivo su Whatsapp</span>
+              </a>
+            </div>
 
+          </div>
         </div>
       </header>
-
-      {/* --- MENU A TUTTO SCHERMO (OVERLAY) --- */}
-      <div 
-        className={`fixed inset-0 bg-white z-[50] transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-full'
-        }`}
-        // Padding top adattato alla nuova altezza più sottile
-        style={{ paddingTop: '70px' }} 
-      >
-        {/* Contenitore scrollabile */}
-        <div className="h-full overflow-y-auto px-6 pb-20">
-          <div className="container mx-auto max-w-2xl flex flex-col gap-6 py-4">
-
-            {/* CTA Mobile (Visibile solo se lo schermo è piccolo) */}
-            <div className="sm:hidden w-full">
-                <Link to="/#preventivatore" className="w-full bg-blue-600 text-white p-3.5 rounded-xl flex justify-center items-center gap-2 font-bold shadow-lg shadow-blue-600/20 mb-4 text-sm">
-                    <Sparkles size={18} /> Fai Preventivo
-                </Link>
-            </div>
-
-            {/* Sezione STRUMENTI */}
-            <div>
-              <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">
-                Strumenti
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {toolsItems.map((t) => (
-                  <Link key={t.label} to={t.href} className="flex sm:flex-col items-center sm:items-start gap-4 p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-100">
-                     <div className={`p-2 rounded-lg ${t.bgColor} ${t.color}`}><t.icon size={20} /></div>
-                     <div>
-                       <div className="font-bold text-gray-900 text-sm leading-tight">{t.label}</div>
-                       <div className="text-[10px] text-gray-500 mt-1">{t.sub}</div>
-                     </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Sezione NAVIGAZIONE */}
-            <div>
-              <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 border-b border-gray-100 pb-2">
-                Menu
-              </h3>
-              <div className="flex flex-col">
-                <Link to="/#pricing" className="py-3.5 text-lg font-bold text-gray-900 border-b border-gray-50 hover:text-blue-600 flex justify-between items-center group">
-                  Listino Prezzi
-                  <ChevronRight className="text-gray-300 group-hover:text-blue-600" size={18}/>
-                </Link>
-                
-                {serviceLinks.map((s) => (
-                  <Link key={s.slug} to={`/servizi/${s.slug}`} className="py-3.5 text-lg font-bold text-gray-900 border-b border-gray-50 hover:text-blue-600 flex justify-between items-center group">
-                    {s.navLabel}
-                    <ChevronRight className="text-gray-300 group-hover:text-blue-600" size={18}/>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* CONTATTI FOOTER DEL MENU */}
-            <div className="mt-6 pt-6 border-t border-gray-100">
-                <a href={`tel:${PHONE_NUMBER}`} className="flex justify-center items-center gap-3 w-full py-4 bg-gray-900 text-white rounded-xl font-bold hover:bg-black transition-colors text-sm">
-                <Phone size={18} /> Chiama {PHONE_NUMBER}
-                </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* --- SPACER (EVITA CHE IL CONTENUTO FINISCA SOTTO L'HEADER) --- 
-          Questo div occupa lo spazio fisico dell'header nel flusso della pagina.
-      */}
-      <div className="h-14 md:h-16 w-full"></div>
     </>
   );
 }

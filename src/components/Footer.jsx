@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
 import { serviceNavLinks } from '../utils/serviceNavLinks';
-import logoImage from '../assets/logo/favicon.png';
+import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
 
 const serviceLinks = serviceNavLinks
   .filter((s) => s.slug && s.navLabel)
@@ -28,67 +28,50 @@ function Footer() {
                 loading="lazy"
               />
             </div>
-            <p className="text-sm text-gray-500">
-              Posatori specializzati in parquet prefinito, SPC, LVT, laminato e scale su misura.
+            <p className="text-sm font-bold text-slate-900 uppercase tracking-tighter">
+              Ecosolution - Specialista in impermeabilizzazioni.
+              <br />
+              Interventi certificati con garanzia decennale.
             </p>
           </div>
 
           <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-gray-500">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-slate-900">
               Servizi
             </p>
-            <ul className="flex flex-col items-center gap-2 text-sm text-gray-500 sm:items-start">
-              {serviceLinks.map(({ slug, label }) => (
-                <li key={slug}>
-                  <Link
-                    to={`/servizi/${slug}`}
-                    className="transition-colors hover:text-blue-600"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="flex flex-col items-center gap-2 text-sm text-slate-600 sm:items-start font-bold">
+              <li>Impermeabilizzazione Terrazzi</li>
+              <li>Guaina Liquida Senza Demolizione</li>
+              <li>Rifacimento Balconi</li>
+              <li>Pronto Intervento Infiltrazioni</li>
             </ul>
           </div>
 
-          <div className="space-y-2 text-sm text-gray-500">
-            <p className="font-semibold text-gray-600">
-              Sede legale
+          <div className="space-y-3">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-slate-900">
+              Contatti
             </p>
-            <p>
-              Via Finanzieri d'Italia<br />
-              20132 Milano (MI)
-            </p>
-            <p className="pt-1 text-xs uppercase tracking-[0.25em] text-gray-400">
-              P.IVA 01914870330
+            <p className="text-sm text-slate-600 font-bold">
+              {PHONE_NUMBER}
+              <br />
+              Milano e tutta la Lombardia
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-3 sm:items-end">
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              onClick={() => {
-                if (typeof window.gtag_report_conversion === 'function') {
-                  window.gtag_report_conversion();
-                }
-              }}
-              className="rounded-full border border-blue-100 bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm shadow-blue-500/20 transition hover:bg-blue-700"
-            >
-              {PHONE_NUMBER}
-            </a>
-            <p className="text-xs text-gray-400">
-              Disponibili 7/7 dalle 7:00 alle 20:00
+          <div className="space-y-3">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-slate-900">
+              Orari
+            </p>
+            <p className="text-sm text-slate-600 font-bold">
+              Lunedì - Sabato: 07:00 - 20:00
+              <br />
+              Pronto Intervento 24/7
             </p>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-gray-200 pt-6 text-center text-xs text-gray-400 sm:flex sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {COMPANY_NAME}. Tutti i diritti riservati.
-          </p>
-          <p className="mt-2 sm:mt-0">
-            Servizio clienti dedicato e consulenza materiali su richiesta.
-          </p>
+        <div className="mt-12 border-t border-gray-100 pt-8 text-center text-xs font-bold text-gray-400 uppercase tracking-widest">
+          © {new Date().getFullYear()} {COMPANY_NAME}. P.IVA 12345678910. All rights reserved.
         </div>
       </div>
     </footer>

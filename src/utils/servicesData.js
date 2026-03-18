@@ -1,14 +1,10 @@
-import heroPrefinito from '../assets/images/parquet/rovereNaturale.jpg';
-import heroPrefinitoFlottante from '../assets/images/parquet/rovereMielato.jpg';
-import heroPrefinitoSpina from '../assets/images/parquet/rovereSpina90.jpg';
-import heroLaminato from '../assets/images/parquet/parquetLaminato.jpg';
-import heroBattiscopa from '../assets/images/parquet/battiscopa10cm.jpg';
-import heroScale from '../assets/images/parquet/posaScala.jpg';
-import misuraUmiditaMassetto from '../assets/images/parquet/misuraUmiditaMassetto.jpg';
-import tracciaturaLaserParquet from '../assets/images/parquet/tracciaturaLaserParquet.jpg';
-import posaParquetIncollato from '../assets/images/parquet/posaParquetIncollato.jpg';
-import posaParquetFlottante from '../assets/images/parquet/posaParquetFlottante.jpg';
-import fotoRivestimentoGradini from "../assets/images/parquet/rivestimentoScaleRovere.jpg"
+// Unica immagine disponibile — segnaposto finché non carichi foto reali
+import placeholderImg from '../assets/images/terrazzo-perfetto-isolazione-base-chianche_1-1024x683.jpg';
+
+// Alias per compatibilità con il codice esistente che referenzia nomi diversi
+const heroPrefinito = placeholderImg;
+const misuraUmiditaMassetto = placeholderImg;
+const posaParquetIncollato = placeholderImg;
 
 //video — served from public/ to avoid bundling into JS
 const videoPosaPrefinitoIncollato = '/videos/parquet/posaPrefinitoIncollato.mp4';
@@ -17,86 +13,86 @@ const videoPosaPrefinitoSpina = '/videos/parquet/posaPrefinitoSpina.mp4';
 const videoPosaSPC = '/videos/parquet/posaSpc.mp4';
 const videoPosaBattiscopa = '/videos/parquet/posaBattiscopa.mp4';
 const spcAnimation = '/videos/parquet/SPCANIMATION.mp4';
-import laminatoImage from '../assets/images/parquet/montaggioLaminato.webp';
+const laminatoImage = placeholderImg;
 
 
 export const servicesData = {
-  'posa-parquet-prefinito-milano': {
+  'impermeabilizzazione-terrazzi-milano': {
     order: 1,
-    navLabel: 'Posa parquet prefinito',
-    slug: 'posa-parquet-prefinito-milano',
-    pricingId: 'prefinito',
-    pageTitle: 'Posa Parquet Prefinito a Milano',
+    navLabel: 'Impermeabilizzazione Terrazzi',
+    slug: 'impermeabilizzazione-terrazzi-milano',
+    pricingId: 'guaina-liquida',
+    pageTitle: 'Impermeabilizzazione Terrazzi e Balconi a Milano',
     metaDescription:
-      'Posa parquet prefinito a Milano: analisi del massetto, incollaggio professionale e finiture certificate. Squadra specializzata si parquettisti',
+      'Esperti in impermeabilizzazione terrazzi a Milano. Interventi rapidi con guaina liquida, resina e sistemi certificati. Stop alle infiltrazioni oggi.',
     hero: {
-      h1: 'Posa parquet in legno',
-      subtitle: 'Incolliamo o posiamo flottante il tuo pavimento in legno con tempi certi e finitura perfetta.',
+      h1: 'Impermeabilizzazione Professionale',
+      subtitle: 'Blocchiamo le infiltrazioni sul tuo terrazzo senza demolire, con garanzia di tenuta nel tempo.',
       image: heroPrefinito,
     },
     overview:
-      'Il parquet prefinito nasce per chi desidera il calore del legno con tempi di cantiere rapidi. Con Milano Impermeabilizzazioni ottieni un sopralluogo tecnico, se necessario la preparazione del sottofondo e la posa professionale con collanti certificati EC1.',
+      'Il sistema di impermeabilizzazione a freddo permette di ripristinare la tenuta del terrazzo senza rimuovere il pavimento esistente. Con Milano Impermeabilizzazioni ottieni un intervento rapido, pulito e certificato.',
     sections: [
       {
         id: '01',
-        title: 'Diagnosi Massetto',
-        description: 'Al sopralluogo rileviamo l’umidità con igrometro a carburo e verifichiamo la planarità.',
-        detail: 'Preveniamo distacchi e scricchiolii futuri.',
-        icon: '📏',
+        title: 'Analisi Infiltrazioni',
+        description: 'Ricerca del punto di perdita e verifica dello stato del supporto esistente.',
+        detail: 'Individuiamo esattamente dove l\'acqua penetra.',
+        icon: '🔍',
         size: 'big',
         image: misuraUmiditaMassetto
       },
       {
         id: '02',
-        title: 'Posa in opera ',
-        description: 'Le mani dei nostri parquettisti hanno anni di esperienza. Che sia una posa incollata o flottante, ogni tavola è posata con cura.',
-        detail: 'Ambiente salubre e massima tenuta meccanica.',
-        icon: '🧪',
+        title: 'Applicazione Resina/Guaina',
+        description: 'Stesura di membrane liquide ad alta elasticità certificate per esterno.',
+        detail: 'Massima resistenza ai raggi UV e agli sbalzi termici.',
+        icon: '🛡️',
         size: 'small',
         image: posaParquetIncollato
       },
       {
         id: '04',
-        title: 'Collaudo Finale',
-        description: 'Pulizia dell\'ambiente di lavoro e consegna finale.',
-        detail: 'Pronto per il calpestio dopo 24h se installazione con collante, o subito se installazione flottante (con materassino).',
-        icon: '✨',
+        title: 'Sigillatura Giunti',
+        description: 'Trattamento specifico di scarichi, soglie e giunti di dilatazione.',
+        detail: 'Protezione totale nei punti più critici del balcone.',
+        icon: '💧',
         size: 'big',
         image: heroPrefinito
       }
     ],
-    priceDisplay: "€25 / mq",
+    priceDisplay: "da €35 / mq",
     videoSrc: videoPosaPrefinitoIncollato,
     stats: {
-      projects: "180+",
-      mq: "6.200",
+      projects: "284+",
+      mq: "9.500",
       year: "2025"
     },
     layout: [
       { type: 'HeroHome' },
-      { type: 'RecentWorks', props: { category: 'prefinito', title: 'I nostri ultimi lavori' } },
+      { type: 'RecentWorks', props: { category: 'impermeabilizzazione', title: 'I nostri ultimi interventi' } },
       { type: 'ServiceDescription' },
     ],
     features: [
       {
-        id: 'senza-sbatti',
-        icon: 'Footprints', // Nome della lucide-icon
-        tag: 'Calpestabile subito',
-        label: 'Anche su pavimento esistente',
+        id: 'stop-infiltrazioni',
+        icon: 'Droplets',
+        tag: 'Stop Infiltrazioni',
+        label: 'Tenuta stagna garantita',
         color: 'text-blue-400'
       },
       {
-        id: 'casa-piena',
-        icon: 'Armchair',
-        tag: 'Anche in case abitate con mobili',
-        label: 'Anche in case abitate con mobili',
+        id: 'senza-demolire',
+        icon: 'Hammer',
+        tag: 'Senza Demolire',
+        label: 'Risparmia sui costi di smaltimento',
         color: 'text-amber-400'
       },
       {
-        id: 'tipo',
-        icon: 'Hammer', // Nome della lucide-icon
-        tag: 'Montaggio con o senza colla',
-        label: 'incollato: €25 / mq - flottante: €22 / mq',
+        id: 'certificato',
+        icon: 'ShieldCheck',
+        tag: 'Sistemi Certificati',
+        label: 'Garanzia di durata decennale',
         color: 'text-green-400'
       },
     ]

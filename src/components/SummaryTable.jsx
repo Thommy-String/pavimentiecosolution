@@ -1,22 +1,12 @@
 import React from 'react';
 import { ArrowRight, Info } from 'lucide-react';
 
-// Import immagini
-import rovereNaturale from '../assets/images/parquet/rovereNaturale.jpg';
-import rovereSpina from '../assets/images/parquet/rovereNaturaleSpinaItaliana.jpg';
-import parquetLaminato from '../assets/images/parquet/parquetLaminato.jpg';
-import parquetSPC from '../assets/images/parquet/parquetSPC.jpg';
-import battiscopa5cm from '../assets/images/parquet/battiscopa5cm.jpg';
-
-const THUMBNAILS = { default: rovereNaturale };
+// Rimosse vecchie importazioni parquet non esistenti
+const THUMBNAILS = { default: null };
 
 const getImageForService = (serviceName) => {
-    const name = serviceName.toLowerCase();
-    if (name.includes('battiscopa')) return battiscopa5cm;
-    if (name.includes('laminato')) return parquetLaminato;
-    if (name.includes('spc')) return parquetSPC;
-    if (name.includes('spina')) return rovereSpina;
-    return rovereNaturale;
+    // Ritorna null finché non carichi nuove immagini per l'impermeabilizzazione
+    return null;
 };
 
 function SummaryTable({ data, onRowClick }) {
@@ -37,6 +27,8 @@ function SummaryTable({ data, onRowClick }) {
                         let unitLabel = 'mq';
                         if (service.unit) unitLabel = service.unit;
                         else if (service.name.toLowerCase().includes('battiscopa')) unitLabel = 'ml';
+                        // Aggiunta unità per impermeabilizzazione se necessario
+                        else if (service.name.toLowerCase().includes('impermeabilizzazione')) unitLabel = 'mq';
 
                         // ORA TUTTI SONO CLICCABILI
                         const rowClass = 'cursor-pointer hover:bg-gray-50 transition-colors';
@@ -49,6 +41,15 @@ function SummaryTable({ data, onRowClick }) {
                             >
                                 {/* SINISTRA */}
                                 <div className="flex items-center gap-4">
+                                    {!isExtra && imageSrc && (
+                                        <div className="h-10 w-10 md:h-12 md:w-12 rounded-lg bg-gray-100 overflow-hidden shrink-0 border border-gray-200">
+                                            <img
+                                                src={imageSrc}
+                                                alt={service.name}
+                                                className="h-full w-full object-cover"
+                                            />
+                                        </div>
+                                    )}
                                     <div className={`
                     relative w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0
                     ${!isExtra ? 'overflow-hidden border border-gray-100 shadow-sm' : 'bg-gray-100 border border-transparent'}

@@ -1,31 +1,24 @@
 import React from 'react';
-import rovereNaturale from '../assets/images/parquet/rovereNaturale.jpg';
-import rovereMielato from '../assets/images/parquet/rovereMielato.jpg';
-import rovereSpinaItaliana from '../assets/images/parquet/rovereNaturaleSpinaItaliana.jpg';
-import rovere90 from '../assets/images/parquet/rovereNaturale90.jpg';
-import rovereIta from '../assets/images/parquet/rovereIta.jpg';
-import rovereSpina90 from '../assets/images/parquet/rovereSpina90.jpg';
+import placeholderImg from '../assets/images/terrazzo-perfetto-isolazione-base-chianche_1-1024x683.jpg';
 
-const parquetImages = [
-  { src: rovereNaturale, alt: 'Terrazzo impermeabilizzato 1' },
-  { src: rovereMielato, alt: 'Terrazzo impermeabilizzato 2' },
-  { src: rovereSpinaItaliana, alt: 'Balcone impermeabilizzato' },
-  { src: rovere90, alt: 'Lastrico solare' },
-  { src: rovereIta, alt: 'Terrazzo piano' },
-  { src: rovereSpina90, alt: 'Guaina liquida' },
+const terrasseImages = [
+  { src: placeholderImg, alt: 'Terrazzo impermeabilizzato 1' },
+  { src: placeholderImg, alt: 'Terrazzo impermeabilizzato 2' },
+  { src: placeholderImg, alt: 'Balcone impermeabilizzato' },
+  { src: placeholderImg, alt: 'Lastrico solare' },
+  { src: placeholderImg, alt: 'Terrazzo piano' },
+  { src: placeholderImg, alt: 'Guaina liquida' },
 ];
 
 function HeroStats() {
   return (
-    // MODIFICA: Rimossi bg-white, shadow, border, rounded e padding eccessivi.
-    // Ora è un flex container pulito che non occupa spazio verticale inutile.
     <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6 sm:gap-10 pt-4">
       
       {/* LATO SINISTRO: Progetti e Face-pile */}
       <div className="flex items-center gap-4">
         {/* I Parquet (Face-pile leggermente più compatto) */}
         <div className="flex -space-x-3">
-            {parquetImages.slice(0, 5).map((img, index) => (
+            {terrasseImages.slice(0, 5).map((img, index) => (
               <div key={index} className="relative transition-transform hover:-translate-y-1 duration-300">
                  <img
                   className="h-9 w-9 rounded-full border-[2px] border-white object-cover shadow-sm"

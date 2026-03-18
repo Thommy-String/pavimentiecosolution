@@ -6,7 +6,6 @@ import { pricingData } from '../utils/pricingData';
 
 import RecentWorks from '../components/RecentWorks';
 import PricingSection from '../components/PricingSection';
-import QuoteDoctor from '../components/QuoteDoctor';
 import ServiceDescription from '../components/ServiceDescription';
 import QuickFloorConsult from '../components/QuickFloorConsult';
 import ServiceHero from './ServiceHero';
@@ -18,7 +17,6 @@ const COMPONENT_MAP = {
   HeroHome: ServiceHeroHome,
   RecentWorks: RecentWorks,
   ServiceFAQ: ServiceFAQ,
-  QuoteDoctor: QuoteDoctor,
   ServiceDescription: ServiceDescription,
 };
 
@@ -69,7 +67,6 @@ function ServicePageLayout({ service }) {
         );
       })}
       <PricingSection defaultCategory={pricingCategory} />
-      <QuoteDoctor />
       <QuickFloorConsult />
     </div>
   );

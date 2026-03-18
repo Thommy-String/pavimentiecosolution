@@ -1,15 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
+import SmartQuoteQuiz from '../components/SmartQuoteQuiz';
 import RecentWorks from '../components/RecentWorks';
-
-// Below-fold: importazioni dirette — evitiamo decine di micro-chunk separati
-// che creano waterfall di rete e bloccano il rendering.
-import PricingSection from '../components/PricingSection';
-import ValuePropsSection from '../components/ValuePropsSection';
-import QuickFloorConsult from '../components/QuickFloorConsult';
-import ServiceFAQ from '../components/ServiceFAQ';
-import DescrizioneMainCategories from '../components/DescrizioneMainCategories';
-import logoImage from '../assets/logo/favicon.png';
+import GuainaLiquidaDetail from '../components/GuainaLiquidaDetail';
+import MethodSection from '../components/MethodSection';
+import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
 import {
   COMPANY_NAME,
   WEBSITE_URL,
@@ -23,6 +18,14 @@ import {
 } from '../utils/constants';
 
 function HomePage() {
+  const [extraModalOpen, setExtraModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Scroll to top when page changes (non essenziale per la home, ma buona pratica)
+    window.scrollTo(0, 0);
+    // Cambia il title a seconda dell'esperienza che vuoi trasmettere
+    document.title = "Impermeabilizzazione Professionale Terrazzi | Stop Infiltrazioni";
+  }, []);
 
   // 1. CONSIGLIO VIDEO: SCHEMA MARKUP
   // Questo "spiega" a Google chi sei, dove sei e cosa fai.
@@ -68,31 +71,26 @@ function HomePage() {
   };
 
   return (
-    <>
-      <script type="application/ld+json">
-        {JSON.stringify(schemaMarkup)}
-      </script>
+    <div className="min-h-screen bg-white">
+      <main className="pt-20 md:pt-24">
+        <script type="application/ld+json">
+          {JSON.stringify(schemaMarkup)}
+        </script>
 
-      <Hero />
+        <Hero />
 
-      {/* Sezione Lavori Recenti */}
-      <RecentWorks showFilter={true} />
+        <SmartQuoteQuiz />
 
-      {/* Below-fold sections — caricamento diretto (bundle unico, zero waterfall) */}
-      <PricingSection />
+        <div className="bg-slate-50">
+          <GuainaLiquidaDetail />
+        </div>
 
-      <ValuePropsSection />
+        <div className="py-16 bg-white">
+          <MethodSection />
+        </div>
 
-      {/* 2. CHECK SOTTOFONDO (QuickFloorConsult) */}
-      <section id="check-sottofondo" className="scroll-mt-28">
-        <QuickFloorConsult />
-      </section>
-
-      {/* FAQ HOMEPAGE GENERICHE */}
-      <ServiceFAQ service={{ slug: 'home-general' }} />
-
-      <DescrizioneMainCategories />
-    </>
+      </main>
+    </div>
   );
 }
 
