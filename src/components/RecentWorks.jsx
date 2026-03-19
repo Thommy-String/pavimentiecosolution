@@ -17,11 +17,11 @@ import lavoro12 from '../assets/images/primadopo/lavoro12.jpg';
 // --- DATI DEI LAVORI AGGIORNATI CON FOTO REALI ---
 const works = [
     { id: 1, title: 'Guaina Liquida Terrazzo', sqm: 65, time: '3 gg', imageAfter: lavoro1 },
-    { id: 2, title: 'Ripristino Terrazzo', sqm: 42, time: '2 gg', imageAfter: lavoro2 },
-    { id: 3, title: 'Impermeab. Tetto Piano', sqm: 88, time: '4 gg', imageAfter: lavoro3 },
-    { id: 4, title: 'Salvataggio in Klinker', sqm: 28, time: '1 gg', imageAfter: lavoro4 },
+    { id: 2, title: 'Tetto industriale', sqm: 42, time: '2 gg', imageAfter: lavoro2 },
+    { id: 3, title: 'Impermeab. Tetto Condominiale', sqm: 88, time: '4 gg', imageAfter: lavoro3 },
+    { id: 4, title: 'Tetto condominiale', sqm: 28, time: '1 gg', imageAfter: lavoro4 },
     { id: 5, title: 'Risanamento Balcone', sqm: 15, time: '1 gg', imageAfter: lavoro5 },
-    { id: 6, title: 'Lastrico Industriale', sqm: 120, time: '5 gg', imageAfter: lavoro6 },
+    { id: 6, title: 'Terrazzo', sqm: 120, time: '5 gg', imageAfter: lavoro6 },
     { id: 7, title: 'Copertura Capannone', sqm: 150, time: '6 gg', imageAfter: lavoro7 },
     { id: 8, title: 'Terrazzo in Resina', sqm: 55, time: '3 gg', imageAfter: lavoro8 },
     { id: 9, title: 'Guaina Box Interrati', sqm: 90, time: '4 gg', imageAfter: lavoro9 },

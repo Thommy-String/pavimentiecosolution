@@ -215,13 +215,6 @@ function Hero() {
 
                 </div>
             </div>
-
-            <div className="w-full bg-slate-50 py-12 lg:py-16 relative z-10 border-t border-slate-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Questo componente è stato rimosso in quanto non necessario al momento */}
-                    {/* <HeroComparisonCards /> */}
-                </div>
-            </div>
             
         </section>
     );
