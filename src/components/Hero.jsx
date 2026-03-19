@@ -1,6 +1,4 @@
 import { COMPANY_NAME } from '../utils/constants';
-import MethodSection from './MethodSection';
-import GuainaLiquidaDetail from './GuainaLiquidaDetail';
 import { MessageCircle } from 'lucide-react';
 import ServiceAreasBadge from './ServiceAreasBadge';
 

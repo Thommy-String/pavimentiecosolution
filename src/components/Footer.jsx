@@ -1,16 +1,7 @@
 import { Link } from 'react-router-dom';
 import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
-import { serviceNavLinks } from '../utils/serviceNavLinks';
 import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
 import { Phone, MessageCircle, Mail, MapPin, Trophy, Clock } from 'lucide-react';
-
-const serviceLinks = serviceNavLinks
-  .filter((s) => s.slug && s.navLabel)
-  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-  .map((s) => ({
-    slug: s.slug,
-    label: s.navLabel,
-  }));
 
 function Footer() {
   const email = "info@ecosolutionsas.com"; 
