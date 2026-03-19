@@ -27,10 +27,7 @@ const StickyGlassFooter = ({
     const cleanPhone = PHONE_NUMBER ? PHONE_NUMBER.replace(/\D/g, '') : "393342221212";
 
     const handleClick = () => {
-        // 1. Traccia la conversione
-        if (typeof window.gtag_report_conversion === 'function') {
-            window.gtag_report_conversion();
-        }
+        // Tracciamento rimosso
 
         const message = "Ciao vi contatto dal vostro sito per le impermeabilizzazioni ...";
         const encodedMessage = encodeURIComponent(message);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Camera, CheckCircle2, ChevronRight, MessageCircle, ArrowLeft, Droplets, MapPin, AlertTriangle, ArrowDownToLine, ShieldCheck } from 'lucide-react';
 import { PHONE_NUMBER } from '../utils/constants';
 
@@ -10,12 +10,15 @@ function SmartQuoteQuiz() {
         sizeLabel: '',
         priceRange: ''
     });
+    
+    // Riferimento al container del quiz per lo scroll
+    const quizRef = useRef(null);
 
     const situations = [
-        { id: 'piove', title: "Piove già dentro", desc: "Ho macchie d'acqua o infiltrazioni al piano di sotto.", icon: Droplets },
-        { id: 'rovinato', title: "Pavimento rovinato", desc: "Piastrelle saltate, fughe vuote o crepe evidenti.", icon: AlertTriangle },
-        { id: 'guaina', title: "Guaina da coprire", desc: "La vecchia guaina è secca, rotta o scollata.", icon: ArrowDownToLine },
-        { id: 'prevenzione', title: "Solo prevenzione", desc: "Voglio isolare prima che inizino i problemi.", icon: ShieldCheck }
+        { id: 'piove', title: "Piove già dentro", desc: "Ho macchie d'acqua o infiltrazioni al piano di sotto.", icon: Droplets, color: "bg-blue-100 text-blue-600 border-blue-200", hoverColor: "group-hover:bg-blue-600 group-hover:text-white" },
+        { id: 'rovinato', title: "Pavimento rovinato", desc: "Piastrelle saltate, fughe vuote o crepe evidenti.", icon: AlertTriangle, color: "bg-orange-100 text-orange-600 border-orange-200", hoverColor: "group-hover:bg-orange-600 group-hover:text-white" },
+        { id: 'guaina', title: "Guaina da coprire", desc: "La vecchia guaina è secca, rotta o scollata.", icon: ArrowDownToLine, color: "bg-slate-200 text-slate-700 border-slate-300", hoverColor: "group-hover:bg-slate-800 group-hover:text-white" },
+        { id: 'prevenzione', title: "Solo prevenzione", desc: "Voglio isolare prima che inizino i problemi.", icon: ShieldCheck, color: "bg-green-100 text-green-600 border-green-200", hoverColor: "group-hover:bg-green-600 group-hover:text-white" }
     ];
 
     const sizes = [
@@ -39,9 +42,20 @@ function SmartQuoteQuiz() {
         }
     ];
 
+    const scrollToTop = () => {
+        if (quizRef.current) {
+            // Scrolliamo leggermente sopra per dare rimosso header se sticky o padding
+            const yOffset = -100;
+            const element = quizRef.current;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    }
+
     const handleSituationSelect = (sit) => {
         setSelections(prev => ({ ...prev, situation: sit.title }));
         setStep(2);
+        scrollToTop();
     };
 
     const handleSizeSelect = (size) => {
@@ -52,11 +66,13 @@ function SmartQuoteQuiz() {
             priceRange: size.priceRange
         }));
         setStep(3);
+        scrollToTop();
     };
 
     const resetQuiz = () => {
         setStep(1);
         setSelections({ situation: '', size: '', sizeLabel: '', priceRange: '' });
+        scrollToTop();
     };
 
     // Rimuove simboli e spazi dal numero per WhatsApp
@@ -73,7 +89,7 @@ function SmartQuoteQuiz() {
     };
 
     return (
-        <section className="bg-white py-20 border-b border-slate-100">
+        <section ref={quizRef} className="bg-white py-20 border-b border-slate-100 scroll-mt-24">
             <div className="container mx-auto px-4 max-w-4xl">
                 
                 {/* Header */}
@@ -115,10 +131,10 @@ function SmartQuoteQuiz() {
                                         <button 
                                             key={idx}
                                             onClick={() => handleSituationSelect(sit)}
-                                            className="group flex flex-col items-start p-6 rounded-[1.5rem] border-2 border-slate-200 hover:border-black hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all text-left bg-white"
+                                            className="group flex flex-col items-start p-6 rounded-[1.5rem] border-2 border-slate-200 hover:border-black hover:bg-slate-50 hover:shadow-lg hover:-translate-y-1 transition-all text-left bg-white"
                                         >
-                                            <div className={`w-12 h-12 flex items-center justify-center rounded-xl mb-4 bg-slate-100 group-hover:bg-yellow-400 group-hover:text-black transition-colors`}>
-                                                <sit.icon className="w-6 h-6 text-slate-600 group-hover:text-black" />
+                                            <div className={`w-12 h-12 flex items-center justify-center rounded-xl mb-4 border ${sit.color} ${sit.hoverColor} transition-colors`}>
+                                                <sit.icon className="w-6 h-6" />
                                             </div>
                                             <span className="font-black text-xl mb-2 text-slate-900 uppercase tracking-tight">{sit.title}</span>
                                             <span className="text-sm text-slate-500 font-medium leading-relaxed">{sit.desc}</span>
@@ -143,13 +159,13 @@ function SmartQuoteQuiz() {
                                         <button 
                                             key={idx}
                                             onClick={() => handleSizeSelect(size)}
-                                            className="group flex flex-col md:flex-row md:items-center justify-between p-6 rounded-[1.5rem] border-2 border-slate-200 hover:border-black hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all text-left bg-white"
+                                            className="group flex flex-col md:flex-row md:items-center justify-between p-6 rounded-[1.5rem] border-2 border-slate-200 hover:border-black hover:bg-slate-50 hover:shadow-lg hover:-translate-y-1 transition-all text-left bg-white"
                                         >
                                             <div className="flex flex-col mb-2 md:mb-0">
                                                 <span className="font-black text-2xl text-slate-900 uppercase tracking-tight group-hover:text-red-600 transition-colors">{size.title}</span>
                                                 <span className="text-sm text-slate-500 font-medium">{size.desc}</span>
                                             </div>
-                                            <div className="hidden md:flex w-12 h-12 bg-slate-100 rounded-full items-center justify-center group-hover:bg-yellow-400 transition-colors">
+                                            <div className="hidden md:flex w-12 h-12 bg-slate-100 rounded-full items-center justify-center group-hover:bg-yellow-400 transition-colors border border-slate-200 group-hover:border-yellow-400">
                                                 <ChevronRight className="w-6 h-6 text-slate-600 group-hover:text-black transition-colors" />
                                             </div>
                                         </button>

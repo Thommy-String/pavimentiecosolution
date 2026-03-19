@@ -108,13 +108,6 @@ function Hero() {
                         <div className="flex justify-center lg:justify-start mt-10 mb-3 relative w-full gap-4 flex-col sm:flex-row">
                             <a
                                 href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
-                                onClick={() => {
-                                    if (typeof window.gtag !== 'undefined') {
-                                        window.gtag('event', 'conversion', {
-                                            'send_to': 'AW-XXXXXXXXX/YYYYYYYYYYYY',
-                                        });
-                                    }
-                                }}
                                 className="
                                     group relative inline-flex items-center justify-center gap-3
                                     bg-[#facc15] hover:bg-[#eab308]
