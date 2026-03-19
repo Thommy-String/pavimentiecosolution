@@ -4,7 +4,7 @@ export const MAIN_CATEGORY = "Impermeabilizzazione Terrazzi";
 export const PRIMARY_CITY = "Milano";
 
 // Usa il numero di telefono REALE che hai sul GBP
-export const PHONE_NUMBER = "334 222 1212"; 
+export const PHONE_NUMBER = "+39 334 222 1212"; 
 export const EMAIL_ADDRESS = "info@impermeabilizzazionimilano.it"; 
 export const WEBSITE_URL = "https://www.impermeabilizzazionimilano.it";
 // Questo è l'indirizzo di REGISTRAZIONE (es. casa tua)

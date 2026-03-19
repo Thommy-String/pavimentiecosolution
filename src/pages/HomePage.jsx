@@ -4,6 +4,7 @@ import SmartQuoteQuiz from '../components/SmartQuoteQuiz';
 import RecentWorks from '../components/RecentWorks';
 import GuainaLiquidaDetail from '../components/GuainaLiquidaDetail';
 import MethodSection from '../components/MethodSection';
+import AboutUs from '../components/AboutUs';
 import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
 import {
   COMPANY_NAME,
@@ -88,6 +89,8 @@ function HomePage() {
         <div className="py-16 bg-white">
           <MethodSection />
         </div>
+
+        <AboutUs />
 
       </main>
     </div>

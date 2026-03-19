@@ -238,7 +238,7 @@ function SmartQuoteQuiz() {
                                         href={generateWhatsAppMessage()} 
                                         className="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 px-4 rounded-2xl font-black text-center uppercase tracking-tight shadow-md hover:shadow-xl transition-all flex justify-center items-center gap-2 text-[15px] md:text-lg hover:-translate-y-1"
                                     >
-                                        <MessageCircle className="w-6 h-6 flex-shrink-0" /> <span className="leading-tight">Preventivo Veloce</span>
+                                        <MessageCircle className="w-6 h-6 flex-shrink-0" /> <span className="leading-tight">Parliamo su WhatsApp</span>
                                     </a>
                                     <a 
                                         href={generateWhatsAppMediaMessage()} 
