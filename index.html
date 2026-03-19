@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://www.impermeabilizzazionimilano.it" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
   <base href="/" />
   <script type="application/ld+json">
       {
@@ -31,6 +31,31 @@
           "postalCode": "20162",
           "addressCountry": "IT"
         }
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18026892376"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18026892376');
+    </script>
+
+    <!-- Funzione globale per tracciare conversioni Google Ads ("Contatto impermeabilizzazione") -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18026892376/DfBgCOKHzIscENiY8pND',
+            'event_callback': callback
+        });
+        return false;
       }
     </script>
 
@@ -64,23 +89,20 @@
       <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}</style>
     </div>
   </div>
-  <!-- Cookie Banner: lo script PRIMA del banner definisce le funzioni globali -->
+  <!-- Cookie Banner: gestito da cookie-banner.js -->
   <script>
-  function _cb_set(n,v){var d=new Date();d.setTime(d.getTime()+31536e6);document.cookie=n+'='+v+';expires='+d.toUTCString()+';path=/;SameSite=Lax';}
-  function _cb_hide(){var b=document.getElementById('cookie-banner');if(b)b.style.cssText='display:none!important';}
-  function _cb_accept(){_cb_hide();_cb_set('gdpr_consent','accepted');}
-  function _cb_decline(){_cb_hide();_cb_set('gdpr_consent','declined');}
-  // Se il cookie esiste già, nascondi subito (prima ancora che il CSS carichi)
+  // Se il cookie esiste già, nascondi subito il banner (prima ancora che il CSS carichi)
   if(document.cookie.indexOf('gdpr_consent=')!==-1){document.write('<style>#cookie-banner{display:none!important}</style>');}
   </script>
   <!-- Cookie Banner HTML -->
   <div id="cookie-banner">
     <p>Facendo clic su «Accetta», acconsenti alla memorizzazione dei cookie sul tuo dispositivo per scopi funzionali, analitici e pubblicitari. <a href="/privacy-policy">Informativa sulla Privacy</a>.</p>
     <div class="cookie-buttons">
-      <button id="accept-cookies" onclick="_cb_accept()">Accetta</button>
-      <button id="decline-cookies" onclick="_cb_decline()">Rifiuta</button>
+      <button id="accept-cookies">Accetta</button>
+      <button id="decline-cookies">Rifiuta</button>
     </div>
   </div>
+  <script src="/cookie-banner.js"></script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

@@ -100,6 +100,7 @@ function Footer() {
             
             <a 
               href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
+              onClick={() => { if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion(); }}
               className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all group"
             >
               <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -113,6 +114,7 @@ function Footer() {
 
             <a 
               href={`https://wa.me/${PHONE_NUMBER.replace(/\D/g, '')}?text=${encodeURIComponent(`Buongiorno ${COMPANY_NAME}, vorrei richiedere un sopralluogo gratuito.`)}`}
+              onClick={() => { if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion(); }}
               className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-green-500 hover:shadow-md transition-all group"
             >
               <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
@@ -126,6 +128,7 @@ function Footer() {
 
             <a 
               href={`mailto:${email}`}
+              onClick={() => { if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion(); }}
               className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-slate-800 hover:shadow-md transition-all group"
             >
               <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-slate-800 group-hover:text-white transition-colors">

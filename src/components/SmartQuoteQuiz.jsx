@@ -254,13 +254,15 @@ function SmartQuoteQuiz() {
                                 {/* Call to action */}
                                 <div className="flex flex-col md:flex-row gap-4 border-t-2 border-slate-100 pt-8 mb-4">
                                     <a 
-                                        href={generateWhatsAppMessage()} 
+                                        href={generateWhatsAppMessage()}
+                                        onClick={() => { if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion(); }}
                                         className="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 px-4 rounded-2xl font-black text-center uppercase tracking-tight shadow-md hover:shadow-xl transition-all flex justify-center items-center gap-2 text-[15px] md:text-lg hover:-translate-y-1"
                                     >
                                         <MessageCircle className="w-6 h-6 flex-shrink-0" /> <span className="leading-tight">Parliamo su WhatsApp</span>
                                     </a>
                                     <a 
-                                        href={generateWhatsAppMediaMessage()} 
+                                        href={generateWhatsAppMediaMessage()}
+                                        onClick={() => { if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion(); }}
                                         className="flex-1 border-4 border-[#facc15] hover:bg-[#facc15] text-slate-900 py-3 px-4 rounded-2xl font-black text-center uppercase tracking-tight shadow-sm hover:shadow-xl transition-all flex flex-col justify-center items-center gap-0.5 hover:-translate-y-1"
                                     >
                                         <div className="flex items-center gap-2 text-[15px] md:text-lg">
