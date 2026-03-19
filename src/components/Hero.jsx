@@ -2,6 +2,7 @@ import { COMPANY_NAME } from '../utils/constants';
 import MethodSection from './MethodSection';
 import GuainaLiquidaDetail from './GuainaLiquidaDetail';
 import { MessageCircle } from 'lucide-react';
+import ServiceAreasBadge from './ServiceAreasBadge';
 
 // Carica l'immagine presente nella cartella images
 import heroMainImg from '../assets/images/heroimage.jpg';
@@ -22,10 +23,8 @@ function Hero() {
                     <div className="text-center lg:text-left flex flex-col items-center lg:items-start w-full">
                         
                         {/* Top Badge */}
-                        <div className="inline-flex flex-col items-center justify-center gap-4 mb-6">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-blue-700 font-bold text-xs uppercase tracking-widest shadow-sm">
-                                <span>Lombardia</span>
-                            </div>
+                        <div className="inline-flex flex-col items-center justify-center gap-4 mb-6 w-full lg:w-auto">
+                            <ServiceAreasBadge />
                         </div>
 
                         <h1 className="text-center lg:text-left font-black tracking-tighter leading-[0.9] md:leading-[0.85] flex flex-col gap-y-4">
@@ -217,10 +216,13 @@ function Hero() {
                 </div>
             </div>
 
-            {/* Comparison Cards Section - Mounted immediately below Hero content */}
-            <div className="bg-white pb-12">
-                <HeroComparisonCards />
+            <div className="w-full bg-slate-50 py-12 lg:py-16 relative z-10 border-t border-slate-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Questo componente è stato rimosso in quanto non necessario al momento */}
+                    {/* <HeroComparisonCards /> */}
+                </div>
             </div>
+            
         </section>
     );
 }
