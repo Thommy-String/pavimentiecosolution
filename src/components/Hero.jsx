@@ -50,48 +50,35 @@ function Hero() {
                                 <span className="ml-2 text-red-600">in 2-3 giorni</span>
                             </span>
 
-                            {/* Prezzo - Design ad alto impatto */}
-                            <div className="flex flex-col mt-6 items-center lg:items-start">
-                                <span className="text-slate-500 text-sm md:text-base font-black uppercase tracking-widest mb-1">
-                                    Lavoro completo
-                                </span>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-sm italic md:text-2xl font-medium text-slate-400 uppercase tracking-tight">da</span>
-                                    <div className="relative inline-block group">
-                                        <span className="relative z-10 text-5xl md:text-7xl font-black text-red-600 tracking-tighter">
-                                            €30<span className="text-2xl md:text-3xl ml-1">/MQ</span>
-                                        </span>
-                                        <div className="absolute -bottom-1 -right-2 w-[110%] h-3 md:h-5 bg-yellow-300 -rotate-2 -z-0"></div>
-                                    </div>
-                                </div>
-                                
-                                {/* Logo Google e Rating sotto il prezzo */}
-                                <div className="flex items-center gap-2 mt-6 opacity-90">
-                                    <img 
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVCvLeTHwisItiq2ogbeAY_JJe5SBA38iLCA&s" 
-                                        alt="Google Logo" 
-                                        className="w-5 h-5 object-contain"
-                                    />
-                                    <div className="flex gap-0.5">
-                                        {[...Array(5)].map((_, i) => (
-                                            <svg key={i} className="w-3 h-3 text-[#facc15]" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                            </svg>
-                                        ))}
-                                    </div>
-                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-tight">21 anni di attività</span>
-                                </div>
-                            </div>
+                            {/* Prezzo - Design ad alto impatto (moved into overlay) */}
+                            <div className="hidden"></div>
                         </h1>
 
                         {/* Immagine sotto titolo - Visibile su mobile */}
-                        <div className="w-full lg:hidden mt-8 rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+                        <div className="w-full lg:hidden mt-8 rounded-2xl overflow-hidden shadow-lg border-4 border-white relative group">
                             <img
                                 src={heroMainImg}
                                 alt={`Impermeabilizzazione professione terrazzi ${COMPANY_NAME}`}
-                                className="w-full h-auto object-cover max-h-[280px]"
+                                className="w-full h-auto object-cover max-h-[350px]"
                                 loading="eager"
                             />
+                            {/* OVERLAY MOBILE: Prezzo e Rating */}
+                            <div className="absolute inset-0 flex flex-col justify-start p-4 z-20">
+                                <div className="bg-white/30 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/50 flex flex-col w-full transform transition-transform group-hover:scale-[1.02]">
+                                    <div className="flex justify-between items-end border-b border-white/30 pb-3 mb-3">
+                                        <div className="flex flex-col">
+                                            <span className="text-slate-900 text-xs font-black uppercase tracking-widest mb-1 drop-shadow-sm">Lavoro completo</span>
+                                            <div className="flex items-center gap-1.5">
+                                                <span className="text-xs italic font-semibold text-slate-800 uppercase drop-shadow-sm">da</span>
+                                                <span className="text-4xl font-black text-red-600 tracking-tighter leading-none drop-shadow-md">
+                                                    €30<span className="text-xl ml-0.5">/MQ</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span className="text-[10px] font-bold text-slate-800 uppercase tracking-tight drop-shadow-sm">21 anni <br/>di attività</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Sottotitolo: Pronto intervento rapido */}
@@ -167,39 +154,45 @@ function Hero() {
                                     loading="eager"
                                 />
 
-                                {/* OVERLAY: Google Logo + 5 Stars + Badge - Positioned INTERNAMENTE e in cima */}
-                                <div className="absolute top-4 left-0 right-0 flex flex-col items-center z-50 px-4">
-                                    <div className="flex flex-col items-center justify-center bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-gray-100/50 w-full max-w-sm">
-                                        <div className="flex items-center justify-center gap-3 mb-2 w-full">
-                                            {/* Google Logo SVG */}
-                                            <svg className="w-6 h-6 drop-shadow-sm flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M23.745 12.27c0-.79-.1-1.54-.25-2.05H12v3.72h6.84c-.15.96-.74 1.78-1.54 2.34v2.04h2.45c1.77-1.63 2.75-4.02 2.75-6.05z" fill="#4285F4"/>
-                                                <path d="M12 24c2.05 0 3.71-.67 4.95-1.81l-2.45-2.04c-.67.44-1.54.69-2.5.69-1.93 0-3.56-1.29-4.15-3.06H5.07v2.07A7.02 7.02 0 0 0 12 24z" fill="#34A853"/>
-                                                <path d="M7.85 14.28c-.15-.44-.23-.91-.23-1.41s.08-.97.23-1.41V9.39H5.07A6.992 6.992 0 0 0 4 12c0 1.08.26 2.1.74 3.02l2.85-2.22.26-.52z" fill="#FBBC04"/>
-                                                <path d="M12 4.75c1.09 0 2.08.37 2.85.99l2.13-2.13C15.69 2.56 14.06 2 12 2 7.7 2 3.99 4.48 2.74 7.98l2.85 2.22c.59-1.77 2.22-3.06 4.15-3.06.59 0 1.16.1 1.7.29.27.09.53.21.76.35l.3.27v-.3z" fill="#EA4335"/>
-                                            </svg>
-                                            
-                                            {/* 5 Stars */}
-                                            <div className="flex gap-1 bg-gray-50 rounded-full px-2 py-0.5">
-                                                {[...Array(5)].map((_, i) => (
-                                                    <svg key={i} className="w-5 h-5 text-[#facc15] drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                                    </svg>
-                                                ))}
+                                {/* OVERLAY DESKTOP: Prezzo e Rating posizionato in basso dentro l'immagine */}
+                                <div className="absolute inset-0 flex flex-col justify-start p-6 z-20">
+                                    <div className="bg-white/30 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-white/50 flex flex-col w-full max-w-sm mr-auto transform transition-transform group-hover:translate-y-2">
+                                        <div className="flex justify-between items-end border-b border-white/30 pb-4 mb-4">
+                                            <div className="flex flex-col">
+                                                <span className="text-slate-900 text-sm font-black uppercase tracking-widest mb-1 drop-shadow-sm">Lavoro completo</span>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm italic font-semibold text-slate-800 uppercase tracking-tight drop-shadow-sm">da</span>
+                                                    <div className="relative inline-block group/price">
+                                                        <span className="relative z-10 text-5xl font-black text-red-600 tracking-tighter leading-none drop-shadow-md">
+                                                            €30<span className="text-2xl ml-1">/MQ</span>
+                                                        </span>
+                                                        <div className="absolute -bottom-1 -right-2 w-[110%] h-3 bg-yellow-300 -rotate-2 -z-0"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        
-                                        {/* Company Badge */}
-                                        <div className="bg-[#ef4444] text-white px-2 py-1.5 rounded-lg shadow-md w-full">
-                                            <p className="text-[10px] font-black uppercase tracking-wider text-center leading-tight">IMPRESA EDILE SPECIALIZZATA IN IMPERMEABILIZZAZIONI</p>
+                                        <div className="flex items-center justify-between opacity-90">
+                                            <div className="flex items-center gap-3">
+                                                {/* Google Logo SVG */}
+                                                <svg className="w-7 h-7 drop-shadow-sm flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M23.745 12.27c0-.79-.1-1.54-.25-2.05H12v3.72h6.84c-.15.96-.74 1.78-1.54 2.34v2.04h2.45c1.77-1.63 2.75-4.02 2.75-6.05z" fill="#4285F4"/>
+                                                    <path d="M12 24c2.05 0 3.71-.67 4.95-1.81l-2.45-2.04c-.67.44-1.54.69-2.5.69-1.93 0-3.56-1.29-4.15-3.06H5.07v2.07A7.02 7.02 0 0 0 12 24z" fill="#34A853"/>
+                                                    <path d="M7.85 14.28c-.15-.44-.23-.91-.23-1.41s.08-.97.23-1.41V9.39H5.07A6.992 6.992 0 0 0 4 12c0 1.08.26 2.1.74 3.02l2.85-2.22.26-.52z" fill="#FBBC04"/>
+                                                    <path d="M12 4.75c1.09 0 2.08.37 2.85.99l2.13-2.13C15.69 2.56 14.06 2 12 2 7.7 2 3.99 4.48 2.74 7.98l2.85 2.22c.59-1.77 2.22-3.06 4.15-3.06.59 0 1.16.1 1.7.29.27.09.53.21.76.35l.3.27v-.3z" fill="#EA4335"/>
+                                                </svg>
+                                                
+                                                {/* 5 Stars */}
+                                                <div className="flex gap-0.5">
+                                                    {[...Array(5)].map((_, i) => (
+                                                        <svg key={i} className="w-5 h-5 text-[#facc15]" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <span className="text-[12px] font-bold text-slate-800 uppercase tracking-tight text-right drop-shadow-sm">21 anni<br/>di attività</span>
                                         </div>
                                     </div>
-                                </div>
-
-                                {/* Label flottante in basso a sinistra */}
-                                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm py-3 px-5 rounded-xl shadow-lg border border-gray-100 z-10">
-                                    <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-0.5">Specialisti</p>
-                                    <p className="text-sm font-bold text-gray-900">Intervento Certificato su Terrazzi</p>
                                 </div>
                             </div>
                         </div>
