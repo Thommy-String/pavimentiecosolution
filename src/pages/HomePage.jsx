@@ -79,6 +79,9 @@ function HomePage() {
         </script>
 
         <Hero />
+        
+        {/* Griglia Lavori Precedenti */}
+        <RecentWorks />
 
         <SmartQuoteQuiz />
 
