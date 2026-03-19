@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageCircle } from 'lucide-react'; // Cambio Phone con MessageCircle per WhatsApp
-import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
+import { COMPANY_NAME } from '../utils/constants';
 import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
 
 function Header() {
@@ -30,38 +29,36 @@ function Header() {
 
       <header className="header-nav bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20 md:h-24">
+          <div className="flex items-center h-20 md:h-24">
             
-            {/* Logo e Tagline */}
-            <div className="flex items-center gap-3 md:gap-4">
+            {/* Logo e Info Aziendali - Espanso */}
+            <div className="flex items-center gap-4 md:gap-6 w-full">
               <Link to="/" className="flex-shrink-0 group">
                 <img 
                   src={logoImage} 
                   alt={COMPANY_NAME} 
-                  className="h-12 w-12 md:h-16 md:w-16 object-contain rounded-xl shadow-sm border border-slate-100 group-hover:scale-105 transition-transform"
+                  className="h-14 w-14 md:h-20 md:w-20 object-contain rounded-2xl shadow-sm border border-slate-100 group-hover:scale-105 transition-transform"
                 />
               </Link>
-              <div className="flex flex-col border-l-2 border-slate-100 pl-3 md:pl-4">
-                <span className="text-lg md:text-xl font-black text-slate-900 leading-tight tracking-tighter">
-                  Ecosolution
-                </span>
-                <span className="text-[10px] md:text-xs font-medium text-slate-600 uppercase tracking-[-0.02em]">
-                  Specialista in impermeabilizzazioni
-                </span>
+              <div className="flex flex-col border-l-2 border-slate-200 pl-4 md:pl-6">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-xl md:text-3xl font-black text-slate-900 leading-none tracking-tighter uppercase">
+                    Ecosolution
+                  </span>
+                  <span className="hidden md:inline-block text-[10px] font-black bg-blue-600 text-white px-2 py-0.5 rounded uppercase tracking-widest">
+                    Ditta Edile
+                  </span>
+                </div>
+                <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 mt-1">
+                  <span className="text-[11px] md:text-sm font-bold text-slate-600 uppercase tracking-widest">
+                    Impermeabilizzazioni Certificate
+                  </span>
+                  <span className="hidden md:block w-1 h-1 bg-slate-300 rounded-full"></span>
+                  <span className="text-[9px] md:text-xs font-semibold text-blue-600 uppercase tracking-tight">
+                   Ditta Edile a Milano e tutta la Lombardia
+                  </span>
+                </div>
               </div>
-            </div>
-
-            {/* Desktop & Mobile CTA - Giallo stile Hero Semplificato */}
-            <div className="flex items-center">
-              <a
-                href={`https://wa.me/${PHONE_NUMBER}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-2 text-slate-900 border-2 border-slate-900/10 hover:border-slate-900/20 px-4 py-2 md:px-6 md:py-3 rounded-lg md:rounded-xl font-bold uppercase tracking-tight text-[11px] md:text-sm transition-all hover:bg-slate-50"
-              >
-                <MessageCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-600" />
-                <span>Preventivo su Whatsapp</span>
-              </a>
             </div>
 
           </div>
