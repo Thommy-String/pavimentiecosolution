@@ -23,8 +23,8 @@ const StickyGlassFooter = ({
         return () => clearInterval(interval);
     }, [cookieDismissed]);
 
-    // Rimuove spazi per il link api whatsapp
-    const cleanPhone = PHONE_NUMBER ? PHONE_NUMBER.replace(/\s+/g, '') : "393342221212";
+    // Rimuove spazi e simboli per il link api whatsapp (deve essere SOLO numeri)
+    const cleanPhone = PHONE_NUMBER ? PHONE_NUMBER.replace(/\D/g, '') : "393342221212";
 
     const handleClick = () => {
         // 1. Traccia la conversione
@@ -32,10 +32,10 @@ const StickyGlassFooter = ({
             window.gtag_report_conversion();
         }
 
-        const message = "Ciao vi contatto dal vostro sito milanoimpermeabilizzazioni.it ...";
+        const message = "Ciao vi contatto dal vostro sito per le impermeabilizzazioni ...";
         const encodedMessage = encodeURIComponent(message);
         
-        // Usa location.href invece di window.open per evitare tab bianca fantasma su mobile
+        // Usa wa.me con il numero pulito (solo cifre)
         window.location.href = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
     };
 

@@ -59,14 +59,17 @@ function SmartQuoteQuiz() {
         setSelections({ situation: '', size: '', sizeLabel: '', priceRange: '' });
     };
 
+    // Rimuove simboli e spazi dal numero per WhatsApp
+    const cleanPhone = PHONE_NUMBER ? PHONE_NUMBER.replace(/\D/g, '') : "393342221212";
+
     const generateWhatsAppMessage = () => {
         const text = `Ciao! Ho fatto il calcolatore sul vostro sito.\n\n*Il mio caso:*\nSuperficie: ${selections.sizeLabel}\nSituazione: ${selections.situation}\n\nVorrei ricevere un preventivo formale.`;
-        return `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+        return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
     };
 
     const generateWhatsAppMediaMessage = () => {
         const text = `Ciao! Ho fatto il calcolatore sul vostro sito e vorrei un preventivo più preciso.\n\n*Il mio caso:*\nSuperficie: ${selections.sizeLabel}\nSituazione: ${selections.situation}\n\nVi invio alcune foto/video del mio terrazzo!`;
-        return `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+        return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
     };
 
     return (

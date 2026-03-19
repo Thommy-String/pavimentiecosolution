@@ -80,10 +80,10 @@ function HomePage() {
 
         <Hero />
         
+        <SmartQuoteQuiz />
+
         {/* Griglia Lavori Precedenti */}
         <RecentWorks />
-
-        <SmartQuoteQuiz />
 
         <div className="bg-slate-50">
           <GuainaLiquidaDetail />

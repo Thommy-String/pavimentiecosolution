@@ -99,7 +99,7 @@ function Footer() {
             </p>
             
             <a 
-              href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
+              href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
               className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all group"
             >
               <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -112,7 +112,7 @@ function Footer() {
             </a>
 
             <a 
-              href={`https://wa.me/${PHONE_NUMBER.replace(/\s+/g, '')}?text=${encodeURIComponent("Buongiorno Ecosolution, vorrei richiedere un sopralluogo gratuito.")}`}
+              href={`https://wa.me/${PHONE_NUMBER.replace(/\D/g, '')}?text=${encodeURIComponent(`Buongiorno ${COMPANY_NAME}, vorrei richiedere un sopralluogo gratuito.`)}`}
               className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-green-500 hover:shadow-md transition-all group"
             >
               <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">

@@ -1,4 +1,4 @@
-import { COMPANY_NAME } from '../utils/constants';
+import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
 import { MessageCircle } from 'lucide-react';
 import ServiceAreasBadge from './ServiceAreasBadge';
 
@@ -107,8 +107,8 @@ function Hero() {
                         {/* Pulsante CTA - Stile Aggressivo e D'Impatto */}
                         <div className="flex justify-center lg:justify-start mt-10 mb-3 relative w-full gap-4 flex-col sm:flex-row">
                             <a
-                                href="tel:+393342221212"
-                                onClick={(e) => {
+                                href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
+                                onClick={() => {
                                     if (typeof window.gtag !== 'undefined') {
                                         window.gtag('event', 'conversion', {
                                             'send_to': 'AW-XXXXXXXXX/YYYYYYYYYYYY',
@@ -142,7 +142,6 @@ function Hero() {
                             <div className="flex items-center justify-center gap-3">
                                 <span className="flex items-center gap-1"><svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> Zero Impegno</span>
                                 <span className="flex items-center gap-1"><svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> Preventivo Gratuito</span>
-                                <span className="flex items-center gap-1"><svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> Intervento Rapido</span>
                             </div>
                         </div>
 
