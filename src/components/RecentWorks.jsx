@@ -16,18 +16,18 @@ import lavoro12 from '../assets/images/primadopo/lavoro12.jpg';
 
 // --- DATI DEI LAVORI AGGIORNATI CON FOTO REALI ---
 const works = [
-    { id: 1, title: 'Guaina Liquida Terrazzo', sqm: 65, time: '3 gg', imageAfter: lavoro1 },
-    { id: 2, title: 'Tetto industriale', sqm: 42, time: '2 gg', imageAfter: lavoro2 },
+    { id: 1, title: 'Terrazzo privato', sqm: 65, time: '3 gg', imageAfter: lavoro1 },
+    { id: 2, title: 'Tetto industriale', sqm: 130, time: '6 gg', imageAfter: lavoro2 },
     { id: 3, title: 'Impermeab. Tetto Condominiale', sqm: 88, time: '4 gg', imageAfter: lavoro3 },
-    { id: 4, title: 'Tetto condominiale', sqm: 28, time: '1 gg', imageAfter: lavoro4 },
-    { id: 5, title: 'Risanamento Balcone', sqm: 15, time: '1 gg', imageAfter: lavoro5 },
+    { id: 4, title: 'Tetto condominiale', sqm: 28, time: '2 gg', imageAfter: lavoro4 },
+    { id: 5, title: 'Tetto privato', sqm: 85, time: '6 gg', imageAfter: lavoro5 },
     { id: 6, title: 'Terrazzo', sqm: 120, time: '5 gg', imageAfter: lavoro6 },
-    { id: 7, title: 'Copertura Capannone', sqm: 150, time: '6 gg', imageAfter: lavoro7 },
-    { id: 8, title: 'Terrazzo in Resina', sqm: 55, time: '3 gg', imageAfter: lavoro8 },
-    { id: 9, title: 'Guaina Box Interrati', sqm: 90, time: '4 gg', imageAfter: lavoro9 },
-    { id: 10, title: 'Impermeab. Lastrico', sqm: 75, time: '3 gg', imageAfter: lavoro10 },
-    { id: 11, title: 'Tetto Condominiale', sqm: 200, time: '7 gg', imageAfter: lavoro11 },
-    { id: 12, title: 'Balcone Privato', sqm: 20, time: '1 gg', imageAfter: lavoro12 }
+    { id: 7, title: 'Balcone privato', sqm: 6, time: '2 gg', imageAfter: lavoro7 },
+    { id: 8, title: 'Balcone privato', sqm: 7, time: '2 gg', imageAfter: lavoro8 },
+    { id: 9, title: 'Imperm. tetto', sqm: 90, time: '4 gg', imageAfter: lavoro9 },
+    { id: 10, title: 'Impermeab. balcone', sqm: 12, time: '3 gg', imageAfter: lavoro10 },
+    { id: 11, title: 'Tetto Condominiale', sqm: 135, time: '6 gg', imageAfter: lavoro11 },
+    { id: 12, title: 'Balcone Residenziale', sqm: 25, time: '4 gg', imageAfter: lavoro12 }
 ];
 
 const RecentWorks = () => {
@@ -48,16 +48,16 @@ const RecentWorks = () => {
                             
                             {/* Testi in basso */}
                             <div className="absolute bottom-0 left-0 right-0 p-3">
-                                <h3 className="text-white font-bold text-xs md:text-sm leading-tight mb-2 drop-shadow-md">
+                                <h3 className="text-white font-black text-xs md:text-base leading-tight mb-2 drop-shadow-md truncate">
                                     {work.title}
-                               </h3>
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-white/90 text-[10px] md:text-xs font-semibold">
-                                    <span className="flex items-center gap-1">
-                                        <svg className="w-3 h-3 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
+                                </h3>
+                                <div className="flex items-center gap-3 text-white/95 text-[11px] md:text-sm font-black leading-none">
+                                    <span className="flex items-center gap-1.5 bg-blue-600/60 backdrop-blur-md px-2 py-1 rounded-lg">
+                                        <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
                                         {work.sqm} mq
                                     </span>
-                                    <span className="flex items-center gap-1">
-                                        <svg className="w-3 h-3 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    <span className="flex items-center gap-1.5 bg-amber-600/60 backdrop-blur-md px-2 py-1 rounded-lg">
+                                        <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                         {work.time}
                                     </span>
                                 </div>
