@@ -51,11 +51,11 @@ function Header() {
                 </div>
                 <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 mt-1">
                   <span className="text-[11px] md:text-sm font-bold text-slate-600 uppercase tracking-widest">
-                    Impermeabilizzazioni Certificate
+                    Ditta Edile - Impermeabilizzazioni
                   </span>
                   <span className="hidden md:block w-1 h-1 bg-slate-300 rounded-full"></span>
                   <span className="text-[9px] md:text-xs font-semibold text-blue-600 uppercase tracking-tight">
-                   Ditta Edile a Milano e tutta la Lombardia
+                    Milano e tutta la Lombardia
                   </span>
                 </div>
               </div>
