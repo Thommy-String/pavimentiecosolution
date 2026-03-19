@@ -1,10 +1,4 @@
-import CompactSocialProof from './CompactSocialProof';
 import { COMPANY_NAME } from '../utils/constants';
-import HeroStats from './HeroStats';
-import ServiceAreasBadge from './ServiceAreasBadge';
-import ProblemAgitation from './ProblemAgitation';
-import WhyChooseUs from './WhyChooseUs';
-import HeroComparisonCards from './HeroComparisonCards';
 import MethodSection from './MethodSection';
 import GuainaLiquidaDetail from './GuainaLiquidaDetail';
 import { MessageCircle } from 'lucide-react';
@@ -27,9 +21,11 @@ function Hero() {
                     {/* --- COLONNA SINISTRA --- */}
                     <div className="text-center lg:text-left flex flex-col items-center lg:items-start w-full">
                         
-                        {/* Service Areas Badge - Moved above H1 */}
-                        <div className="mb-4 w-full flex justify-center lg:justify-start">
-                            <ServiceAreasBadge />
+                        {/* Top Badge */}
+                        <div className="inline-flex flex-col items-center justify-center gap-4 mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-blue-700 font-bold text-xs uppercase tracking-widest shadow-sm">
+                                <span>Lombardia</span>
+                            </div>
                         </div>
 
                         <h1 className="text-center lg:text-left font-black tracking-tighter leading-[0.9] md:leading-[0.85] flex flex-col gap-y-4">
