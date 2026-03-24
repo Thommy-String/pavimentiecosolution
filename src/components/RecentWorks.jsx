@@ -1,33 +1,36 @@
 import React from 'react';
 
-// Immagini reali dei lavori
-import lavoro1 from '../assets/images/primadopo/lavoro1.jpg';
-import lavoro2 from '../assets/images/primadopo/lavoro2.jpg';
-import lavoro3 from '../assets/images/primadopo/lavoro3.jpg';
-import lavoro4 from '../assets/images/primadopo/lavoro4.jpg';
-import lavoro5 from '../assets/images/primadopo/lavoro5.jpg';
-import lavoro6 from '../assets/images/primadopo/lavoro6.jpg';
-import lavoro7 from '../assets/images/primadopo/lavoro7.webp';
-import lavoro8 from '../assets/images/primadopo/lavoro8.jpg';
-import lavoro9 from '../assets/images/primadopo/lavoro9.jpg';
-import lavoro10 from '../assets/images/primadopo/lavoro10.jpg';
-import lavoro11 from '../assets/images/primadopo/lavoro11.webp';
-import lavoro12 from '../assets/images/primadopo/lavoro12.jpg';
+// TODO: Immagini reali dei lavori da aggiungere
+// import lavoro1 from '../assets/images/primadopo/lavoro1.jpg';
+// import lavoro2 from '../assets/images/primadopo/lavoro2.jpg';
+// import lavoro3 from '../assets/images/primadopo/lavoro3.jpg';
+// import lavoro4 from '../assets/images/primadopo/lavoro4.jpg';
+// import lavoro5 from '../assets/images/primadopo/lavoro5.jpg';
+// import lavoro6 from '../assets/images/primadopo/lavoro6.jpg';
+// import lavoro7 from '../assets/images/primadopo/lavoro7.webp';
+// import lavoro8 from '../assets/images/primadopo/lavoro8.jpg';
+// import lavoro9 from '../assets/images/primadopo/lavoro9.jpg';
+// import lavoro10 from '../assets/images/primadopo/lavoro10.jpg';
+// import lavoro11 from '../assets/images/primadopo/lavoro11.webp';
+// import lavoro12 from '../assets/images/primadopo/lavoro12.jpg';
 
 // --- DATI DEI LAVORI AGGIORNATI CON FOTO REALI ---
+// Placeholder images - da sostituire con immagini reali
+const placeholderImg = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop';
+
 const works = [
-    { id: 1, title: 'Terrazzo privato', sqm: 65, time: '3 gg', imageAfter: lavoro1 },
-    { id: 2, title: 'Tetto industriale', sqm: 130, time: '6 gg', imageAfter: lavoro2 },
-    { id: 3, title: 'Impermeab. Tetto Condominiale', sqm: 88, time: '4 gg', imageAfter: lavoro3 },
-    { id: 4, title: 'Tetto condominiale', sqm: 28, time: '2 gg', imageAfter: lavoro4 },
-    { id: 5, title: 'Tetto privato', sqm: 85, time: '6 gg', imageAfter: lavoro5 },
-    { id: 6, title: 'Terrazzo', sqm: 120, time: '5 gg', imageAfter: lavoro6 },
-    { id: 7, title: 'Balcone privato', sqm: 6, time: '2 gg', imageAfter: lavoro7 },
-    { id: 8, title: 'Balcone privato', sqm: 7, time: '2 gg', imageAfter: lavoro8 },
-    { id: 9, title: 'Imperm. tetto', sqm: 90, time: '4 gg', imageAfter: lavoro9 },
-    { id: 10, title: 'Impermeab. balcone', sqm: 12, time: '3 gg', imageAfter: lavoro10 },
-    { id: 11, title: 'Tetto Condominiale', sqm: 135, time: '6 gg', imageAfter: lavoro11 },
-    { id: 12, title: 'Balcone Residenziale', sqm: 25, time: '4 gg', imageAfter: lavoro12 }
+    { id: 1, title: 'Terrazzo privato', sqm: 65, time: '3 gg', imageAfter: placeholderImg },
+    { id: 2, title: 'Tetto industriale', sqm: 130, time: '6 gg', imageAfter: placeholderImg },
+    { id: 3, title: 'Impermeab. Tetto Condominiale', sqm: 88, time: '4 gg', imageAfter: placeholderImg },
+    { id: 4, title: 'Tetto condominiale', sqm: 28, time: '2 gg', imageAfter: placeholderImg },
+    { id: 5, title: 'Tetto privato', sqm: 85, time: '6 gg', imageAfter: placeholderImg },
+    { id: 6, title: 'Terrazzo', sqm: 120, time: '5 gg', imageAfter: placeholderImg },
+    { id: 7, title: 'Balcone privato', sqm: 6, time: '2 gg', imageAfter: placeholderImg },
+    { id: 8, title: 'Balcone privato', sqm: 7, time: '2 gg', imageAfter: placeholderImg },
+    { id: 9, title: 'Imperm. tetto', sqm: 90, time: '4 gg', imageAfter: placeholderImg },
+    { id: 10, title: 'Impermeab. balcone', sqm: 12, time: '3 gg', imageAfter: placeholderImg },
+    { id: 11, title: 'Tetto Condominiale', sqm: 135, time: '6 gg', imageAfter: placeholderImg },
+    { id: 12, title: 'Balcone Residenziale', sqm: 25, time: '4 gg', imageAfter: placeholderImg }
 ];
 
 const RecentWorks = () => {
