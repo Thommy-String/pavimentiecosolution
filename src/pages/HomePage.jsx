@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
 import ScenarioSolutionsSection from '../components/ScenarioSolutionsSection';
-import MaterialsShowcaseSection from '../components/MaterialsShowcaseSection';
 import PavimentQuiz from '../components/PavimentQuiz';
 import RecentWorks from '../components/RecentWorks';
 import MethodSection from '../components/MethodSection';
@@ -82,8 +81,6 @@ function HomePage() {
         <Hero />
 
         <ScenarioSolutionsSection />
-
-        <MaterialsShowcaseSection />
         
         <PavimentQuiz />
 
