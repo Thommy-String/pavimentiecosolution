@@ -1,12 +1,12 @@
 // Dati Aziendali (DEVONO CORRISPONDERE AL TUO GBP)
-export const COMPANY_NAME = "Milano Impermeabilizzazioni"; // Il tuo nome commerciale
-export const MAIN_CATEGORY = "Impermeabilizzazione Terrazzi";
+export const COMPANY_NAME = "Posa Pavimenti Milano"; // Il tuo nome commerciale
+export const MAIN_CATEGORY = "Posa Pavimenti";
 export const PRIMARY_CITY = "Milano";
 
 // Usa il numero di telefono REALE che hai sul GBP
 export const PHONE_NUMBER = "+39 334 222 1212"; 
-export const EMAIL_ADDRESS = "info@impermeabilizzazionimilano.it"; 
-export const WEBSITE_URL = "https://www.ecosolutionsas.com/impermeabilizzazioni";
+export const EMAIL_ADDRESS = "info@posapavimentimilano.it"; 
+export const WEBSITE_URL = "https://www.ecosolutionsas.com/pavimenti";
 // Questo è l'indirizzo di REGISTRAZIONE (es. casa tua)
 // Serve per lo Schema Markup, anche se è NASCOSTO sul GBP
 export const SCHEMA_ADDRESS = {
@@ -25,9 +25,12 @@ export const SCHEMA_GEO = {
 
 // Queste DEVONO corrispondere alle Categorie Secondarie del tuo GBP
 export const GBP_CATEGORIES = [
-  "Ditta specializzata in impermeabilizzazioni",
-  "Impermeabilizzazione terrazzi e balconi",
-  "Rifacimento guaina terrazzo",
+  "Posa pavimenti",
+  "Posa gres porcellanato",
+  "Posa parquet",
+  "Posa piastrelle",
+  "Rifacimento massetto",
+  "Adeguamento porte",
 ];
 
 // Queste sono le AREE DI SERVIZIO che hai inserito nel GBP

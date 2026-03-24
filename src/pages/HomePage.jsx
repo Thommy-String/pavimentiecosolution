@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
 import ScenarioSolutionsSection from '../components/ScenarioSolutionsSection';
-import LiquidShieldSection from '../components/LiquidShieldSection';
-import SmartQuoteQuiz from '../components/SmartQuoteQuiz';
+import MaterialsShowcaseSection from '../components/MaterialsShowcaseSection';
+import PavimentQuiz from '../components/PavimentQuiz';
 import RecentWorks from '../components/RecentWorks';
-import GuainaLiquidaDetail from '../components/GuainaLiquidaDetail';
 import MethodSection from '../components/MethodSection';
 import AboutUs from '../components/AboutUs';
 import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
@@ -27,7 +26,7 @@ function HomePage() {
     // Scroll to top when page changes (non essenziale per la home, ma buona pratica)
     window.scrollTo(0, 0);
     // Cambia il title a seconda dell'esperienza che vuoi trasmettere
-    document.title = "Impermeabilizzazione Professionale Terrazzi | Stop Infiltrazioni";
+    document.title = "Posa Pavimenti Professionale Milano | Chiavi in Mano";
   }, []);
 
   // 1. CONSIGLIO VIDEO: SCHEMA MARKUP
@@ -70,7 +69,7 @@ function HomePage() {
       }
     ],
     "serviceType": MAIN_CATEGORY,
-    "description": `Siamo ${MAIN_CATEGORY} specializzati in impermeabilizzazioni terrazzi e coperture a ${PRIMARY_CITY}.`
+    "description": `Siamo specializzati in posa pavimenti chiavi in mano a ${PRIMARY_CITY}. Parquet, gres porcellanato, piastrelle, vinilico e molto altro. Nessun obbligo di acquisto, sopralluogo gratuito.`
   };
 
   return (
@@ -83,17 +82,13 @@ function HomePage() {
         <Hero />
 
         <ScenarioSolutionsSection />
-        
-        <SmartQuoteQuiz />
 
-        <LiquidShieldSection />
+        <MaterialsShowcaseSection />
+        
+        <PavimentQuiz />
 
         {/* Griglia Lavori Precedenti */}
         <RecentWorks />
-
-        <div className="bg-slate-50">
-          <GuainaLiquidaDetail />
-        </div>
 
         <div className="py-16 bg-white">
           <MethodSection />

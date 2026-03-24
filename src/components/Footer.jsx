@@ -29,11 +29,11 @@ function Footer() {
             </Link>
             <div className="space-y-4">
               <p className="text-sm font-bold text-slate-800 leading-relaxed uppercase tracking-tight">
-                Ecosolution. Ditta edile specializzata.
+                Ecosolution. Specialisti in posa pavimenti chiavi in mano.
               </p>
-              <div className="flex items-center gap-2 text-amber-600">
+              <div className="flex items-center gap-2 text-emerald-600">
                 <Trophy className="w-5 h-5" />
-                <span className="text-[10px] font-black uppercase tracking-widest">N.1 in costruzioni e ristrutturazioni complete</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">N.1 in posa pavimenti con qualità garantita</span>
               </div>
             </div>
           </div>
@@ -45,21 +45,21 @@ function Footer() {
             </p>
             <div className="grid grid-cols-1 gap-8">
               <div>
-                <p className="text-[10px] font-bold text-blue-600 uppercase mb-3 tracking-widest">Impermeabilizzazione</p>
+                <p className="text-[10px] font-bold text-emerald-600 uppercase mb-3 tracking-widest">Posa Pavimenti</p>
                 <ul className="space-y-2 text-sm text-slate-600 font-bold uppercase tracking-tighter">
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Terrazzi & Balconi</li>
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Tetti & Coperture</li>
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Piscine & Vasche</li>
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Fondamenta & Muri</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Parquet & Legno</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Gres Porcellanato</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">SPC / Vinilico</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Piastrelle Ceramiche</li>
                 </ul>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-blue-600 uppercase mb-3 tracking-widest">Edilizia Generale</p>
+                <p className="text-[10px] font-bold text-emerald-600 uppercase mb-3 tracking-widest">Servizi Correlati</p>
                 <ul className="space-y-2 text-sm text-slate-600 font-bold uppercase tracking-tighter">
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Ristrutturazioni Chiavi in Mano</li>
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Posa Pavimenti (SPC/Laminato)</li>
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Interventi Strutturali</li>
-                  <li className="hover:text-blue-600 transition-colors cursor-pointer">Manutenzioni Condominiali</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Rifacimento Massetto</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Adeguamento Porte</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Posa Chiavi in Mano</li>
+                  <li className="hover:text-emerald-600 transition-colors cursor-pointer">Sopralluogo Gratuito</li>
                 </ul>
               </div>
             </div>

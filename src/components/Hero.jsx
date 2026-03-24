@@ -59,11 +59,6 @@ function Hero() {
             </span>
           </h1>
 
-          {/* ── Sottotitolo ── */}
-          <p className="max-w-3xl text-sm sm:text-base md:text-lg text-white/75 leading-relaxed mb-12 font-medium">
-            Il tuo nuovo pavimento posato a regola d'arte, senza lo stress di dover coordinare mille ditte.
-          </p>
-
           {/* ── Services Chips ── */}
           <ServicesChips />
 
