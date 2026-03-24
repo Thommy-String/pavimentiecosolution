@@ -32,7 +32,7 @@ const StickyGlassFooter = ({
             window.gtag_report_conversion();
         }
 
-        const message = "Ciao vi contatto dal vostro sito per le impermeabilizzazioni ...";
+        const message = "Ciao vi contatto dal vostro sito per la posa pavimenti ...";
         const encodedMessage = encodeURIComponent(message);
         
         // Usa wa.me con il numero pulito (solo cifre)

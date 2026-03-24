@@ -10,10 +10,10 @@ const ScenarioSolutionsSection = () => {
                     {/* Header Principale */}
                     <div className="mb-16 px-8 md:px-12 lg:px-20">
                         <h2 className="text-4xl md:text-7xl font-black text-slate-900 mb-8 uppercase tracking-tighter leading-[0.9]">
-                            Non serve <span className="text-emerald-500">trasformare casa tua</span>
+                            Non serve <span className="text-emerald-500">impazzire</span> per un
                             <br/>
                             <span className="relative inline-block">
-                                <span className="relative z-10">in un cantiere da incubo</span>
+                                <span className="relative z-10">nuovo pavimento</span>
                                 <span className="absolute bottom-2 left-0 w-full h-4 bg-emerald-400/30 -rotate-1 -z-0"></span>
                             </span>
                         </h2>

@@ -2,18 +2,14 @@ import React from 'react';
 import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
 import { UserCheck, ShieldCheck, Award, Building2, Users2, MapPin, MessageCircle, Camera } from 'lucide-react';
 import ecoLogo from '../assets/logo/eco-solutions-logo-.jpeg';
+import img1 from '../assets/images/aboutuslavori copia/1.jpeg';
+import img2 from '../assets/images/aboutuslavori copia/2.jpeg';
+import img3 from '../assets/images/aboutuslavori copia/3.jpeg';
+import img4 from '../assets/images/aboutuslavori copia/4.jpeg';
+import img5 from '../assets/images/aboutuslavori copia/5.jpeg';
+import img6 from '../assets/images/aboutuslavori copia/6.jpeg';
 
-// TODO: Add images from aboutuslavori folder
-// import img1 from '../assets/images/aboutuslavori/1.jpeg';
-// import img2 from '../assets/images/aboutuslavori/2.jpeg';
-// import img3 from '../assets/images/aboutuslavori/3.jpeg';
-// import img4 from '../assets/images/aboutuslavori/4.jpeg';
-// import img5 from '../assets/images/aboutuslavori/5.jpeg';
-// import img6 from '../assets/images/aboutuslavori/6.jpeg';
-
-// Placeholder images
-const placeholderImg = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop';
-const images = [placeholderImg, placeholderImg, placeholderImg, placeholderImg, placeholderImg, placeholderImg];
+const images = [img1, img2, img3, img4, img5, img6];
 
 function AboutUs() {
     return (

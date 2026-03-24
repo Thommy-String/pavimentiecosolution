@@ -80,9 +80,9 @@ function HomePage() {
 
         <Hero />
 
-        <ScenarioSolutionsSection />
-        
         <PavimentQuiz />
+
+        <ScenarioSolutionsSection />
 
         {/* Griglia Lavori Precedenti */}
         <RecentWorks />

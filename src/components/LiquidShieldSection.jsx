@@ -1,5 +1,6 @@
 import React from 'react';
-import { Camera } from 'lucide-react';
+import { Camera, Phone } from 'lucide-react';
+import { PHONE_NUMBER } from '../utils/constants';
 
 const LiquidShieldSection = () => {
     return (
@@ -31,8 +32,8 @@ const LiquidShieldSection = () => {
                                 <span className="bg-green-100 px-1 text-green-700 font-bold">Un unico referente, zero calcinacci e un lavoro finito alla metà del tempo e costi.</span>
                             </p>
                             
-                            {/* CTA - WhatsApp con foto */}
-                            <div className="mt-12 flex justify-center relative max-w-3xl w-full">
+                            {/* CTA — WhatsApp con foto + Phone */}
+                            <div className="mt-12 flex flex-col md:flex-row gap-4 relative max-w-3xl w-full">
                                 <a
                                     href={`https://wa.me/39334222121212?text=${encodeURIComponent('Ciao! Vi invio una foto del mio tetto/terrazzo per un preventivo. Potete aiutarmi a risolvere le infiltrazioni senza demolire?')}`}
                                     onClick={() => {
@@ -43,9 +44,40 @@ const LiquidShieldSection = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="
-                                        group relative inline-flex flex-col items-center justify-center gap-1 w-full
-                                        bg-[#facc15] hover:bg-[#eab308]
-                                        px-10 py-4 rounded-xl
+                                        group relative inline-flex flex-col items-center justify-center gap-1 flex-1
+                                        bg-white hover:bg-slate-50
+                                        px-8 py-5 rounded-xl
+                                        text-orange-500 font-black uppercase tracking-tighter
+                                        transition-all duration-200
+                                        shadow-[0_12px_0_0_rgba(0,0,0,0.3),0_20px_25px_-5px_rgba(249,115,22,0.4)]
+                                        hover:shadow-[0_6px_0_0_rgba(0,0,0,0.3),0_15px_20px_-5px_rgba(249,115,22,0.5)]
+                                        hover:-translate-y-1
+                                        active:translate-y-1
+                                        active:shadow-[0_2px_0_0_rgba(0,0,0,0.3)]
+                                        border-2 border-orange-500
+                                        relative
+                                    "
+                                >
+                                    <div className="flex items-center justify-center gap-2">
+                                        <Camera className="w-5 h-5" strokeWidth={2.5} />
+                                        <span className="text-base md:text-lg tracking-[-0.07em]">Inviaci una foto</span>
+                                    </div>
+                                    <p className="text-[10px] md:text-xs font-medium text-orange-500/80 italic">
+                                        Su WhatsApp
+                                    </p>
+                                </a>
+
+                                <a
+                                    href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
+                                    onClick={() => {
+                                        if (typeof window.gtag_report_conversion === 'function') {
+                                            window.gtag_report_conversion();
+                                        }
+                                    }}
+                                    className="
+                                        group relative inline-flex flex-col items-center justify-center gap-1 flex-1
+                                        bg-yellow-400 hover:bg-yellow-500
+                                        px-8 py-5 rounded-xl
                                         text-slate-900 font-black uppercase tracking-tighter
                                         transition-all duration-200
                                         shadow-[0_12px_0_0_rgba(0,0,0,0.3),0_20px_25px_-5px_rgba(250,204,21,0.4)]
@@ -57,12 +89,12 @@ const LiquidShieldSection = () => {
                                         relative
                                     "
                                 >
-                                    <div className="flex items-center justify-center gap-3">
-                                        <Camera className="w-6 h-6" strokeWidth={2.5} />
-                                        <span className="text-xl md:text-2xl tracking-[-0.07em]">Inviaci una foto del tuo tetto o terrazzo</span>
+                                    <div className="flex items-center justify-center gap-2">
+                                        <Phone className="w-5 h-5" strokeWidth={2.5} />
+                                        <span className="text-base md:text-lg tracking-[-0.07em]">Chiama ora</span>
                                     </div>
-                                    <p className="text-[10px] md:text-xs font-medium text-slate-800 italic">
-                                        Tutti i giorni: 7:00-20:00
+                                    <p className="text-[10px] md:text-xs font-medium text-slate-700 italic">
+                                        Preventivo gratuito
                                     </p>
                                 </a>
                             </div>
