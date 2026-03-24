@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Prevenire overflow orizzontale su mobile */
+html, body {
+  overflow-x: hidden;
+}
+
 /* Stili per lo slider (range input) */
 .range-thumb-blue::-webkit-slider-thumb {
   -webkit-appearance: none;

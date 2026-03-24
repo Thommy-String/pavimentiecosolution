@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
+import ScenarioSolutionsSection from '../components/ScenarioSolutionsSection';
+import LiquidShieldSection from '../components/LiquidShieldSection';
 import SmartQuoteQuiz from '../components/SmartQuoteQuiz';
 import RecentWorks from '../components/RecentWorks';
 import GuainaLiquidaDetail from '../components/GuainaLiquidaDetail';
@@ -79,8 +81,12 @@ function HomePage() {
         </script>
 
         <Hero />
+
+        <ScenarioSolutionsSection />
         
         <SmartQuoteQuiz />
+
+        <LiquidShieldSection />
 
         {/* Griglia Lavori Precedenti */}
         <RecentWorks />
