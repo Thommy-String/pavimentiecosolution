@@ -1,7 +1,7 @@
 import { PHONE_NUMBER } from '../utils/constants';
 import ServiceAreasBadge from './ServiceAreasBadge';
 import { Phone } from 'lucide-react';
-
+import WorksCarousel from './WorksCarousel';
 import heroMainImg from '../assets/images/heroImage.jpg';
 
 function Hero() {
@@ -68,6 +68,11 @@ function Hero() {
               <span className="text-yellow-300 text-xl font-black">100% Chiavi in Mano</span>
             </span>
           </h1>
+
+          {/* ── Carosello Lavori ── */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 mb-8">
+            <WorksCarousel />
+          </div>
 
           {/* ── Google Review Card ── */}
           <div className="w-full max-w-2xl mb-8">
