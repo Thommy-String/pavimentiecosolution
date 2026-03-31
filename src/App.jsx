@@ -22,7 +22,7 @@ function App() {
   }, [location]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-white">
       
       <Header></Header>
       
@@ -31,7 +31,7 @@ function App() {
       </main>
      
       <Footer />
-      <StickyGlassFooter />
+      {/* <StickyGlassFooter /> */}
       
     </div>
   )

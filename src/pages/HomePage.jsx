@@ -4,8 +4,9 @@ import ScenarioSolutionsSection from '../components/ScenarioSolutionsSection';
 import PavimentQuiz from '../components/PavimentQuiz';
 import RecentWorks from '../components/RecentWorks';
 import MethodSection from '../components/MethodSection';
+import ServicesTable from '../components/ServicesTable';
 import AboutUs from '../components/AboutUs';
-import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
+import logoImage from '../assets/logo/MRK-Ecosolution-logo.jpeg';
 import {
   COMPANY_NAME,
   WEBSITE_URL,
@@ -25,7 +26,7 @@ function HomePage() {
     // Scroll to top when page changes (non essenziale per la home, ma buona pratica)
     window.scrollTo(0, 0);
     // Cambia il title a seconda dell'esperienza che vuoi trasmettere
-    document.title = "Posa Pavimenti Professionale Milano | Chiavi in Mano";
+    document.title = "MRK Ecosolution — Serramenti su Misura | Prezzi di Fabbrica Milano";
   }, []);
 
   // 1. CONSIGLIO VIDEO: SCHEMA MARKUP
@@ -68,12 +69,12 @@ function HomePage() {
       }
     ],
     "serviceType": MAIN_CATEGORY,
-    "description": `Siamo specializzati in posa pavimenti chiavi in mano a ${PRIMARY_CITY}. Parquet, gres porcellanato, piastrelle, vinilico e molto altro. Nessun obbligo di acquisto, sopralluogo gratuito.`
+    "description": `Produciamo e installiamo serramenti su misura a ${PRIMARY_CITY}. Infissi in PVC, alluminio e legno-alluminio a prezzi di fabbrica. Preventivo gratuito, posa certificata, garanzia 15 anni.`
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <main className="pt-20 md:pt-24">
+      <main>
         <script type="application/ld+json">
           {JSON.stringify(schemaMarkup)}
         </script>
@@ -82,10 +83,12 @@ function HomePage() {
 
         <PavimentQuiz />
 
-        <ScenarioSolutionsSection />
-
         {/* Griglia Lavori Precedenti */}
         <RecentWorks />
+
+        <ServicesTable />
+
+        <ScenarioSolutionsSection />
 
         <div className="py-16 bg-white">
           <MethodSection />

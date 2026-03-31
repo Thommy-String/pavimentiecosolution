@@ -1,82 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { COMPANY_NAME, PHONE_NUMBER } from '../utils/constants';
-import logoImage from '../assets/logo/eco-solutions-logo-.jpeg';
+import logoImage from '../assets/logo/MRK-Ecosolution-logo.jpeg';
+import { Phone } from 'lucide-react';
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Modifica: Header sempre visibile, ma non sticky (position: absolute)
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // 1. Chiudi il menu quando cambia la rotta (opzionale se singola pagina)
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <>
-      <style>
-        {`
-          .header-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-          }
-        `}
-      </style>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        scrolled
+          ? 'bg-white/80 backdrop-blur-2xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
 
-      <header className="header-nav bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-20 md:h-24">
-            
-            {/* Logo e Info Aziendali - Espanso */}
-            <div className="flex items-center gap-4 md:gap-6 w-full">
-              <Link to="/" className="flex-shrink-0 group">
-                <img 
-                  src={logoImage} 
-                  alt={COMPANY_NAME} 
-                  className="h-14 w-14 md:h-20 md:w-20 object-contain rounded-2xl shadow-sm border border-slate-100 group-hover:scale-105 transition-transform"
-                />
-              </Link>
-              <div className="flex flex-col border-l-2 border-slate-200 pl-4 md:pl-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-md md:text-xl font-black text-slate-900 leading-none tracking-tighter uppercase">
-                    Ecosolution s.a.s.
-                  </span>
-                  <span className="hidden md:inline-block text-[10px] font-black bg-blue-600 text-white px-2 py-0.5 rounded uppercase tracking-widest">
-                    Ditta Edile
-                  </span>
-                </div>
-                <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 mt-1">
-                  <span className="text-[10px] md:text-sm font-medium text-slate-600 uppercase tracking-widest">
-                    Ditta Edile - posa pavimenti
-                  </span>
-                  <span className="hidden md:block w-1 h-1 bg-slate-300 rounded-full"></span>
-                  {/* Phone CTA - Responsive */}
-                  <a 
-                    href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
-                    onClick={() => {
-                        if (typeof window.gtag_report_conversion === 'function') {
-                            window.gtag_report_conversion();
-                        }
-                    }}
-                    className="flex items-center gap-1.5 text-blue-600 font-bold hover:text-blue-800 transition-colors duration-200 group underline"
-                  >
-                    <svg className="w-4 h-4 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                    <span className="text-xs md:text-sm">{PHONE_NUMBER}</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+          {/* Logo */}
+          <Link to="/" className="flex items-center group">
+            <img
+              src={logoImage}
+              alt={COMPANY_NAME}
+              className="h-12 w-auto md:h-16 object-contain transition-opacity duration-300 group-hover:opacity-70"
+            />
+          </Link>
 
-          </div>
+          {/* Nav links — only desktop, Apple style */}
+          <nav className="hidden md:flex items-center gap-8">
+            {['Serramenti', 'Materiali', 'Metodo', 'Contatti'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-[13px] text-[#1d1d1f]/70 hover:text-[#1d1d1f] font-normal tracking-wide transition-colors duration-300"
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA */}
+          <a
+            href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
+            onClick={() => {
+              if (typeof window.gtag_report_conversion === 'function') {
+                window.gtag_report_conversion();
+              }
+            }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1d1d1f] text-white text-[13px] font-medium hover:bg-[#1d1d1f]/90 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+          >
+            <Phone className="w-3.5 h-3.5" strokeWidth={2.5} />
+            <span className="hidden sm:inline">Preventivo</span>
+            <span className="sm:hidden">Chiama</span>
+          </a>
+
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
 

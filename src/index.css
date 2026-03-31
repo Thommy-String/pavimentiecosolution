@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
-/* Prevenire overflow orizzontale su mobile */
-html, body {
+/* ── Apple-like global resets ── */
+html {
+  scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+  background: #ffffff;
+}
+
+/* Selection style */
+::selection {
+  background: rgba(182, 120, 255, 0.25);
+  color: inherit;
 }
 
 /* Stili per lo slider (range input) */
